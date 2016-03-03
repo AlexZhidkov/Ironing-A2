@@ -65,8 +65,8 @@
 }
 
 
-.header__link--github {
-  @include fa-icon(github);
+.header__link--link {
+  @include fa-icon(link);
   font-size: rem(24px);
 
   &:before {
