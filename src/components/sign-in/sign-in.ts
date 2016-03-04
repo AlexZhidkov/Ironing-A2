@@ -18,8 +18,8 @@ const template: string = require('./sign-in.html');
 export class SignIn {
   constructor(private auth: AuthService, private router: Router) {}
 
-  signInWithGithub(): void {
-    this.auth.signInWithGithub()
+  signInWithFacebook(): void {
+    this.auth.signInWithFacebook()
       .then(() => this.postSignIn());
   }
 
@@ -28,8 +28,8 @@ export class SignIn {
       .then(() => this.postSignIn());
   }
 
-  signInWithTwitter(): void {
-    this.auth.signInWithTwitter()
+  signInAsGuest(): void {
+    this.auth.signInAsGuest()
       .then(() => this.postSignIn());
   }
 
