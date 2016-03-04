@@ -26,16 +26,16 @@ export class AuthService {
     return this.authenticated ? this.authData.uid : '';
   }
 
-  signInWithGithub(): Promise<any> {
-    return this.authWithOAuth('github');
+  signInWithFacebook(): Promise<any> {
+    return this.authWithOAuth('facebook');
   }
 
   signInWithGoogle(): Promise<any> {
     return this.authWithOAuth('google');
   }
 
-  signInWithTwitter(): Promise<any> {
-    return this.authWithOAuth('twitter');
+  signInAsGuest(): Promise<any> {
+    return this.authWithOAuth('guest');
   }
 
   signOut(): void {
