@@ -23,6 +23,7 @@ script:
 
 after_success:
   - ls -al
+  - ls ./scripts/
   - ./scripts/deploy.sh
   - ls -al
 
