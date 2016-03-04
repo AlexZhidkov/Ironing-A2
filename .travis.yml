@@ -11,7 +11,6 @@ before_install:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - chmod ugo+x ./scripts/dist.sh
-  - chmod ugo+x ./scripts/deploy.sh
   - chmod ugo+x ./scripts/deploy1.sh
 
 install:
@@ -19,15 +18,10 @@ install:
   - npm install
 
 script:
-  - ls -al
   - ./scripts/dist.sh
 
 after_success:
-  - ls -al
-  - ls -al ./scripts/
-  - ./scripts/deploy.sh
   - ./scripts/deploy1.sh
-  - ls -al
 
 notifications:
   email:
