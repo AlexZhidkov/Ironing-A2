@@ -22,9 +22,9 @@ script:
   - ./scripts/dist.sh
 
 after_success:
-  -ls -al
+  - ls -al
   - ./scripts/deploy.sh
-  -ls -al
+  - ls -al
 
 notifications:
   email:
