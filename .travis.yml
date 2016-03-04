@@ -18,10 +18,13 @@ install:
   - npm install
 
 script:
+  - ls -al
   - ./scripts/dist.sh
 
 after_success:
+  -ls -al
   - ./scripts/deploy.sh
+  -ls -al
 
 notifications:
   email:
