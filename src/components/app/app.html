@@ -1,16 +1,16 @@
 <header class="header">
-  <div class="g-row">
-    <div class="g-col">
-      <h1 class="header__title">We Love Ironing</h1>
+    <div class="g-row">
+        <div class="g-col">
+            <h1 class="header__title">We Love Ironing Order</h1>
 
-      <ul class="header__links">
-        <li *ngIf="authenticated"><a class="header__link" (click)="signOut()" href="javascript:">Sign out</a></li>
-        <li><a class="header__link header__link--link" href="http://www.weloveironing.com.au/"></a></li>
-      </ul>
+            <ul class="header__links">
+                <li *ngIf="authenticated"><a class="header__link" (click)="signOut()" href="javascript:">Sign out</a></li>
+                <li><a class="header__link" href="http://www.weloveironing.com.au/">Go Back</a></li>
+            </ul>
+        </div>
     </div>
-  </div>
 </header>
 
 <main class="main">
-  <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
 </main>

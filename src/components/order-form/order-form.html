@@ -1,8 +1,10 @@
-<form [ngFormModel]="order" (submit)="submit($event)">
-    <input ngControl="name" type="text" placeholder="Name">
-    <input ngControl="email" type="email" placeholder="Email">
-    <input ngControl="phone" type="text" placeholder="Phone">
-    <input ngControl="address" type="text" placeholder="Address">
-    <input ngControl="message" type="text" placeholder="Message">
-    <button type="submit">Submit</button>
-</form>
+<div class="col-md-4">
+    <form class="form" [ngFormModel]="order" (submit)="submit($event)">
+        <input class="form-control" ngControl="name" type="text" placeholder="Name">
+        <input class="form-control" ngControl="email" type="email" placeholder="Email">
+        <input class="form-control" ngControl="phone" type="text" placeholder="Phone">
+        <input class="form-control" ngControl="address" type="text" placeholder="Address">
+        <textarea class="form-control" rows="6" ngControl="message" placeholder="Message"></textarea>
+        <button class="button pull-right" type="submit">Submit</button>
+    </form>
+</div>
