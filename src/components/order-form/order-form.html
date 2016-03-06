@@ -1,21 +1,10 @@
-<form class="ui form" [ngFormModel]="order" (submit)="submit($event)">
-    <input ngControl="name" type="text" placeholder="Name">
-    <input ngControl="email" type="email" placeholder="Email">
-    <input ngControl="phone" type="text" placeholder="Phone">
-    <input ngControl="address" type="text" placeholder="Address">
-    <input ngControl="message" type="text" placeholder="Message">
-    <button type="submit">Submit</button>
-</form>
-<!--
-<div class="g-row">
-    <div class="g-col">
-        <form class="order-form" (ngSubmit)="submit()" novalidate>
-            <input ngControl="name" [(ngModel)]="name" class="order-form__input" placeholder="Name" required type="text">
-            <input ngControl="email" [(ngModel)]="email" class="order-form__input" placeholder="Email" required type="email">
-            <input ngControl="phone" [(ngModel)]="phone" class="order-form__input" placeholder="Phone" required type="text">
-            <input ngControl="address" [(ngModel)]="address" class="order-form__input" placeholder="Address" required type="text">
-            <input ngControl="message" [(ngModel)]="message" class="order-form__input" placeholder="Message" required type="text">
-        </form>
-    </div>
+<div style="width: 600px">
+    <form class="order-form" [ngFormModel]="order" (submit)="submit($event)">
+        <input class="order-form__input" ngControl="name" type="text" placeholder="Name">
+        <input class="order-form__input" ngControl="email" type="email" placeholder="Email">
+        <input class="order-form__input" ngControl="phone" type="text" placeholder="Phone">
+        <input class="order-form__input" ngControl="address" type="text" placeholder="Address">
+        <textarea class="order-form__input" rows="6" style="height: 300px;" ngControl="message" type="text" placeholder="Message"></textarea>
+        <button class="order-form__button" type="button">Submit</button>
+    </form>
 </div>
--->
