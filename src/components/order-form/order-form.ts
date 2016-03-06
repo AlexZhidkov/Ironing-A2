@@ -3,11 +3,12 @@ import { CanActivate } from 'angular2/router';
 import { AuthRouteHelper } from 'core/auth/auth-route-helper';
 import {FormBuilder, ControlGroup, Validators} from 'angular2/common';
 
+const styles: string = require('./order-form.scss');
 const template: string = require('./order-form.html');
-
 
 @Component({
     selector: 'orderForm',
+    styles: [styles],
     template
 })
 

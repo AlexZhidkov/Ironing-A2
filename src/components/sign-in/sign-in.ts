@@ -28,9 +28,12 @@ export class SignIn {
       .then(() => this.postSignIn());
   }
 
-  signInAsGuest(): void {
-    this.auth.signInAsGuest()
-      .then(() => this.postSignIn());
+  callPhone(): void {
+      window.location.href = "tel:+61406522097";
+  }
+  
+  sendSms(): void {
+      window.location.href = "sms:+61406522097";
   }
 
   private postSignIn(): void {
