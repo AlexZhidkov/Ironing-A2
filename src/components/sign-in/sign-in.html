@@ -1,9 +1,17 @@
 <div class="g-row sign-in">
-  <div class="g-col">
-    <h1 class="sign-in__heading">Sign in</h1>
-    <button class="sign-in__button" (click)="signInWithGoogle()" type="button">Google</button>
-    <button class="sign-in__button" (click)="signInWithFacebook()" type="button">Facebook</button>
-    <button class="sign-in__button" (click)="callPhone()" type="button">Call</button>
-    <button class="sign-in__button" (click)="sendSms()" type="button">SMS</button>
-  </div>
+    <div class="g-col">
+        <h1 class="sign-in__heading">Sign in</h1>
+        <button class="sign-in__button" (click)="signInWithGoogle()" type="button">
+            Google
+        </button>
+        <button class="sign-in__button" (click)="signInWithFacebook()" type="button">
+            Facebook
+        </button>
+        <button class="sign-in__button" (click)="callPhone()" type="button">
+            <span class="icon material-icons">phone</span> Call
+        </button>
+        <button class="sign-in__button" (click)="sendSms()" type="button">
+            <span class="icon material-icons">message</span> SMS
+        </button>
+    </div>
 </div>

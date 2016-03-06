@@ -29,11 +29,11 @@ export class SignIn {
   }
 
   callPhone(): void {
-      window.location.href = "tel:+61406522097";
+      window.location.href = 'tel:+61406522097';
   }
-  
+
   sendSms(): void {
-      window.location.href = "sms:+61406522097";
+      window.location.href = 'sms:+61406522097';
   }
 
   private postSignIn(): void {
