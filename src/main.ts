@@ -7,7 +7,7 @@ import { App } from 'components/app/app';
 
 // core
 import { AUTH_PROVIDERS } from 'core/auth/providers';
-import { TASK_PROVIDERS } from 'core/task/providers';
+import { TASK_PROVIDERS } from 'core/order/providers';
 
 // global styles
 import './styles/styles.scss';

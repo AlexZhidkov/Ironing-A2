@@ -2,7 +2,7 @@
 
 
 # We Love Ironing App
-A simple Todo app example built with **Angular 2**. The app features a **Firebase** backend with **OAuth** authentication, and an **immutable** task list. Try the demo at <a href="https://ironing.firebaseapp.com/" target="_blank">https://ironing.firebaseapp.com/</a>, and check out the <a href="https://github.com/r-park/angular2-webpack-seed" target="_blank">webpack seed</a> this project is based on.
+A simple Todo app built with **Angular 2**. The app features a **Firebase** backend with **OAuth** authentication, and an **immutable** order list. Try the demo at <a href="https://ironing.firebaseapp.com/" target="_blank">https://ironing.firebaseapp.com/</a>, and check out the <a href="https://github.com/r-park/angular2-webpack-seed" target="_blank">webpack seed</a> this project is based on.
 
 - Angular
 - Firebase
