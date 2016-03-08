@@ -1,13 +1,11 @@
 <header class="header">
     <div class="g-row">
-        <div class="g-col">
-            <h1 class="header__title">We Love Ironing Order</h1>
+        <img src="WLILogo2016land.png" alt="We Love Ironing" width="150" />
 
-            <ul class="header__links">
-                <li *ngIf="authenticated"><a class="header__link" (click)="signOut()" href="javascript:">Sign out</a></li>
-                <li><a class="header__link" href="http://www.weloveironing.com.au/">Go Back</a></li>
-            </ul>
-        </div>
+        <ul class="header__links">
+            <li *ngIf="authenticated"><a class="header__link" (click)="signOut()" href="javascript:">Sign out</a></li>
+            <li><a class="header__link" href="http://www.weloveironing.com.au/">Go Back</a></li>
+        </ul>
     </div>
 </header>
 
