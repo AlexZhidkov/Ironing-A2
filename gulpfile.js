@@ -102,13 +102,18 @@ gulp.task('ts', done => {
   });
 });
 
+gulp.task('images', function() {
+  return gulp.src('src/images/**/*')
+  .pipe(gulp.dest(paths.target))
+})
 
 //===========================
 //  BUILD
 //---------------------------
 gulp.task('build', gulp.series(
   'clean.target',
-  'ts'
+  'ts',
+  'images'
 ));
 
 
