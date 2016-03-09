@@ -1,4 +1,4 @@
-import { Component, Input } from 'angular2/core';
+import { Component } from 'angular2/core';
 import { CanActivate } from 'angular2/router';
 import { AuthRouteHelper } from 'core/auth/auth-route-helper';
 import { FormBuilder, ControlGroup, Validators } from 'angular2/common';
