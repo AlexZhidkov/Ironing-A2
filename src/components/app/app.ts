@@ -4,6 +4,7 @@ import { AuthRouteHelper } from 'core/auth/auth-route-helper';
 import { AuthService } from 'core/auth/auth-service';
 import { SignIn } from '../sign-in/sign-in';
 import { OrderForm } from '../order-form/order-form';
+import { Orders } from '../orders';
 
 const styles: string = require('./app.scss');
 const template: string = require('./app.html');
@@ -20,7 +21,8 @@ const template: string = require('./app.html');
 
 @RouteConfig([
   {path: '/', component: SignIn, as: 'SignIn'},
-  {path: '/OrderForm', component: OrderForm, as: 'OrderForm'}
+  {path: '/OrderForm', component: OrderForm, as: 'OrderForm'},
+  {path: '/Orders', component: Orders, as: 'Orders'}
 ])
 
 export class App {

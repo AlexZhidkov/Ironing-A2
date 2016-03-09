@@ -1,0 +1,9 @@
+<ul class="order-filters">
+  <li><a [class.active]="!filter" [routerLink]="['/Orders']">View All</a></li>
+  <li><a [class.active]="filter == 'active'" [routerLink]="['/Orders', {filter: 'active'}]">Active</a></li>
+  <li><a [class.active]="filter == 'completed'" [routerLink]="['/Orders', {filter: 'completed'}]">Completed</a></li>
+</ul>
+
+<div class="order-list">
+  <order-item [model]="order" *ngFor="#order of orders | async | filterOrders:filter"></order-item>
+</div>
