@@ -22,8 +22,8 @@ describe('Order', () => {
     order = new Order('test');
   });
 
-  it('should set title with provided `title` param', () => {
-    expect(order.title).toBe('test');
+  it('should set name with provided `name` param', () => {
+    expect(order.name).toBe('test');
   });
 
   it('should set `completed` to `false`', () => {
