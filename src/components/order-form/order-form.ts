@@ -17,7 +17,7 @@ const template: string = require('./order-form.html');
 @CanActivate(() => AuthRouteHelper.requireAuth())
 
 export class OrderForm {
-    @Input() model: IOrder;
+    model: IOrder;
     order: ControlGroup;
     builder: FormBuilder;
     constructor(private orderService: OrderService, fb: FormBuilder) {
@@ -30,7 +30,8 @@ export class OrderForm {
         });
     }
     submit(event: any): void {
-        this.orderService.createOrder(this.order);
+        this.model.name = this.order.name;
+        this.orderService.createOrder(this.model);
 
         console.log(this.order.value);
         event.preventDefault();
