@@ -28,6 +28,11 @@ export class SignIn {
       .then(() => this.postSignIn());
   }
 
+  signInAsGuest(): void {
+    this.auth.signInAsGuest()
+      .then(() => this.postSignIn());
+  }
+
   callPhone(): void {
       window.location.href = 'tel:+61406522097';
   }

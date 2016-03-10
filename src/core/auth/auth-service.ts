@@ -35,8 +35,7 @@ export class AuthService {
   }
 
   signInAsGuest(): Promise<any> {
-    // https://www.firebase.com/docs/web/guide/login/anonymous.html
-    return this.authWithOAuth('Anonymous');
+    return this.authAnonymously();
   }
 
   signOut(): void {
@@ -54,6 +53,20 @@ export class AuthService {
       this.ref.authWithOAuthPopup(provider, (error: Error) => {
         if (error) {
           console.error('ERROR @ AuthService#authWithOAuth :', error);
+          reject(error);
+        }
+        else {
+          resolve();
+        }
+      });
+    });
+  }
+
+  private authAnonymously(): Promise<any> {
+    return new Promise((resolve: () => void, reject: (reason: Error) => void) => {
+      this.ref.authAnonymously((error: Error) => {
+        if (error) {
+          console.error('ERROR @ AuthService#authAnonymously :', error);
           reject(error);
         }
         else {
