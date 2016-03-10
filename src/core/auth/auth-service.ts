@@ -35,7 +35,8 @@ export class AuthService {
   }
 
   signInAsGuest(): Promise<any> {
-    return this.authWithOAuth('guest');
+    // https://www.firebase.com/docs/web/guide/login/anonymous.html
+    return this.authWithOAuth('Anonymous');
   }
 
   signOut(): void {
