@@ -19,7 +19,8 @@ describe('Order', () => {
   let order: Order;
 
   beforeEach(() => {
-    order = new Order('test');
+    order = new Order();
+    order.name = 'test;'
   });
 
   it('should set name with provided `name` param', () => {
