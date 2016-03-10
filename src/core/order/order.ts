@@ -2,6 +2,7 @@ export interface IOrder {
     completed: boolean;
     createdAt: number;
     key?: string;
+    clientId: string;
     name: string;
     email: string;
     phone: string;
@@ -13,6 +14,7 @@ export interface IOrder {
 export class Order implements IOrder {
     completed: boolean = false;
     createdAt: number = Firebase.ServerValue.TIMESTAMP;
+    clientId: string;
     name: string;
     email: string;
     phone: string;

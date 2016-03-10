@@ -8,6 +8,7 @@ import { App } from 'components/app/app';
 // core
 import { AUTH_PROVIDERS } from 'core/auth/providers';
 import { ORDER_PROVIDERS } from 'core/order/providers';
+import { CLIENT_PROVIDERS } from 'core/client/providers';
 
 // global styles
 import './styles/styles.scss';
@@ -25,5 +26,6 @@ bootstrap(App, [
   ROUTER_PROVIDERS,
   AUTH_PROVIDERS,
   ORDER_PROVIDERS,
+  CLIENT_PROVIDERS,
   provide(APP_BASE_HREF, {useValue: '/'})
 ]).catch((error: Error) => console.error(error));

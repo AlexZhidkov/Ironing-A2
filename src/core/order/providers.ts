@@ -8,14 +8,14 @@ export const ORDER_PROVIDERS: any[] = [
   provide(OrderService, {
     deps: [AuthService],
     useFactory: (auth: AuthService): OrderService => {
-      return new OrderService(new Firebase(`${FIREBASE_ORDERS_URL}/${auth.id}`));
+      return new OrderService(new Firebase(`${FIREBASE_ORDERS_URL}`), auth.id);
     }
   }),
 
    provide(OrderStore, {
     deps: [AuthService],
     useFactory: (auth: AuthService): OrderStore => {
-      return new OrderStore(new Firebase(`${FIREBASE_ORDERS_URL}/${auth.id}`));
+      return new OrderStore(new Firebase(`${FIREBASE_ORDERS_URL}`));
     }
   })
 ];

@@ -4,6 +4,7 @@ import { AuthRouteHelper } from 'core/auth/auth-route-helper';
 import { FormBuilder, ControlGroup, Validators } from 'angular2/common';
 import { Order } from 'core/order/order';
 import { OrderService } from 'core/order/order-service';
+import { ClientService } from 'core/client/client-service';
 
 const styles: string = require('./order-form.scss');
 const template: string = require('./order-form.html');
@@ -19,7 +20,7 @@ const template: string = require('./order-form.html');
 export class OrderForm {
     order: ControlGroup;
     builder: FormBuilder;
-    constructor(private orderService: OrderService, fb: FormBuilder) {
+    constructor(private orderService: OrderService, private clientService: ClientService, fb: FormBuilder) {
         this.order = fb.group({
             'name': ['', Validators.required],
             'email': ['', Validators.required],
@@ -37,6 +38,7 @@ export class OrderForm {
         data.message = this.order.value.message;
 
         this.orderService.createOrder(data);
+        this.clientService.createOrUpdateClient(data);
 
         console.log(this.order.value);
         event.preventDefault();
