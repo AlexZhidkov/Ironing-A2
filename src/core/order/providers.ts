@@ -4,7 +4,7 @@ import { AuthService } from '../auth/auth-service';
 import { OrderService } from './order-service';
 import { OrderStore } from './order-store';
 
-export const TASK_PROVIDERS: any[] = [
+export const ORDER_PROVIDERS: any[] = [
   provide(OrderService, {
     deps: [AuthService],
     useFactory: (auth: AuthService): OrderService => {

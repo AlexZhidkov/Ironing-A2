@@ -7,7 +7,7 @@ import { App } from 'components/app/app';
 
 // core
 import { AUTH_PROVIDERS } from 'core/auth/providers';
-import { TASK_PROVIDERS } from 'core/order/providers';
+import { ORDER_PROVIDERS } from 'core/order/providers';
 
 // global styles
 import './styles/styles.scss';
@@ -24,6 +24,6 @@ Firebase.INTERNAL.forceWebSockets();
 bootstrap(App, [
   ROUTER_PROVIDERS,
   AUTH_PROVIDERS,
-  TASK_PROVIDERS,
+  ORDER_PROVIDERS,
   provide(APP_BASE_HREF, {useValue: '/'})
 ]).catch((error: Error) => console.error(error));
