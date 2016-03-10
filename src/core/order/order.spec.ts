@@ -20,7 +20,7 @@ describe('Order', () => {
 
   beforeEach(() => {
     order = new Order();
-    order.name = 'test;'
+    order.name = 'test';
   });
 
   it('should set name with provided `name` param', () => {
