@@ -44,9 +44,4 @@ export class ClientService {
             this.createClient(client);
         }
     }
-
-    private getSavedClient(snapshot: FirebaseDataSnapshot): IClient {
-        return snapshot.val();
-    }
-
 }
