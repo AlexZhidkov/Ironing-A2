@@ -30,18 +30,29 @@ export class ClientService {
     }
 
     createOrUpdateClient(order: IOrder): void {
+        let savedClient = new Client();
         let client = new Client();
         client.name = order.name;
         client.email = order.email;
         client.phone = order.phone;
         client.address = order.address;
         client.lastOrderAt = order.createdAt;
-        console.log('this.ref.child(this.authId) : ', this.ref.child(this.authId));
-        if (this.ref.child(this.authId) !== null) {
+        this.ref.child(this.authId).once('value', function (dataSnapshot) {
+                savedClient = getSavedClient(dataSnapshot)
+            }, function (err) {
+              // code to handle read error
+        });
+
+        if (savedClient.name) {
             // this.updateClient(client)
         }
         else {
             this.createClient(client);
         }
     }
+
+    private getSavedClient(snapshot: FirebaseDataSnapshot): IClient {
+        return snapshot.val()
+    }
+
 }
