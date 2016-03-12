@@ -13,8 +13,8 @@ const styles: string = require('./app.scss');
 const template: string = require('./app.html');
 
 export var APP_ROUTES: RouteDefinition[] = [
-    {path: '/', component: SignIn, as: 'SignIn'},
-    {path: '/orderform', component: OrderForm, as: 'OrderForm'},
+    {path: '/', component: SignIn, as: 'Sign In'},
+    {path: '/orderform', component: OrderForm, as: 'Order Form'},
     {path: '/orders', component: Orders, as: 'Orders'},
     {path: '/clients', component: Clients, as: 'Clients'},
     {path: '/staff', component: Staff, as: 'Staff'}
