@@ -6,7 +6,6 @@ export class OrderService {
 
     createOrder(order: IOrder): void {
         order.clientId = this.authId;
-        console.log(order);
         this.ref.push(order, (error: Error) => {
             if (error) {
                 console.error('ERROR @ createOrder :', error);
