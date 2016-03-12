@@ -1,3 +1,14 @@
+<header class="header">
+    <div class="g-row">
+        <img src="WLILogo2016land.png" alt="We Love Ironing" width="150" />
+
+        <ul class="header__links">
+            <li *ngIf="authenticated"><a class="header__link" (click)="signOut()" href="javascript:">Sign out</a></li>
+            <li><a class="header__link" href="http://www.weloveironing.com.au/">Go Back</a></li>
+        </ul>
+    </div>
+</header>
+
 <div class="col-md-4">
     <form class="form" [ngFormModel]="order" (submit)="submit($event)">
         <input class="form-control" ngControl="name" type="text" placeholder="Name">
