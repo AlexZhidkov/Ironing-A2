@@ -6,6 +6,7 @@ import { SignIn } from '../sign-in/sign-in';
 import { OrderForm } from '../orders/order-form/order-form';
 import { Orders } from '../orders/orders';
 import { Clients } from '../clients/clients';
+import { Staff } from '../staff/staff';
 
 const styles: string = require('./app.scss');
 const template: string = require('./app.html');
@@ -24,7 +25,8 @@ const template: string = require('./app.html');
   {path: '/', component: SignIn, as: 'SignIn'},
   {path: '/orderform', component: OrderForm, as: 'OrderForm'},
   {path: '/orders', component: Orders, as: 'Orders'},
-  {path: '/clients', component: Clients, as: 'Clients'}
+  {path: '/clients', component: Clients, as: 'Clients'},
+  {path: '/staff', component: Staff, as: 'Staff'}
 ])
 
 export class App {

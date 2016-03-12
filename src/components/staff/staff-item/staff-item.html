@@ -1,0 +1,43 @@
+<div
+  [ngClass]="{'staff-item--completed': model.completed, 'staff-item--editing': editing}"
+  class="staff-item"
+  tabindex="0">
+
+  <div class="cell">
+    <button
+      *ngIf="!editing"
+      (click)="toggleStatus()"
+      aria-label="Mark staff as completed"
+      class="staff-item__button"
+      type="button">
+      <span class="icon material-icons" [ngClass]="{'icon--active': model.completed}">done</span>
+    </button>
+  </div>
+
+  <div class="cell">
+    <div
+      class="staff-item__name"
+      tabindex="0">
+      {{ model.name }}, {{model.email}}, {{model.phone}}, {{model.address}}, {{model.message}}
+    </div>
+  </div>
+
+  <div class="cell">
+    <button
+      *ngIf="editing"
+      (click)="stopEditing()"
+      aria-label="Cancel editing"
+      class="staff-item__button"
+      type="button">
+      <span class="icon material-icons">&#xe14c;</span>
+    </button>
+    <button
+      *ngIf="!editing"
+      (click)="delete()"
+      aria-label="Delete staff"
+      class="staff-item__button"
+      type="button">
+      <span class="icon material-icons">delete</span>
+    </button>
+  </div>
+</div>

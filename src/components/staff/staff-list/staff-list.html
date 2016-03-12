@@ -1,0 +1,10 @@
+<ul class="staff-filters">
+  <li><a [class.active]="!filter" [routerLink]="['/Staff']">View All</a></li>
+  <li><a [class.active]="filter == 'manager'" [routerLink]="['/Staff', {filter: 'manager'}]">Managers</a></li>
+  <li><a [class.active]="filter == 'driver'" [routerLink]="['/Staff', {filter: 'driver'}]">Drivers</a></li>
+  <li><a [class.active]="filter == 'ironer'" [routerLink]="['/Staff', {filter: 'ironer'}]">Ironers</a></li>
+</ul>
+
+<div class="staff-list">
+  <staff-item [model]="staff" *ngFor="#staff of staff | async | filterStaff:filter"></staff-item>
+</div>
