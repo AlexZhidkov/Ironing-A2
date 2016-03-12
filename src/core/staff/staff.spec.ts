@@ -27,11 +27,4 @@ describe('Staff', () => {
     expect(staff.name).toBe('test');
   });
 
-  it('should set `completed` to `false`', () => {
-    expect(staff.completed).toBe(false);
-  });
-
-  it('should set `createdAt` to firebase timestamp placeholder', () => {
-    expect(staff.createdAt).toEqual(Firebase.ServerValue.TIMESTAMP);
-  });
 });
