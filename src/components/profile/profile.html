@@ -1,0 +1,7 @@
+<div class="col-md-4">
+    <form class="form" [ngFormModel]="profile" (submit)="submit($event)">
+        <input class="form-control" ngControl="name" type="text" placeholder="Name">
+        <input class="form-control" ngControl="email" type="email" placeholder="Email">
+        <input class="form-control" ngControl="phone" type="text" placeholder="Phone">
+    </form>
+</div>

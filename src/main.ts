@@ -10,6 +10,7 @@ import { AUTH_PROVIDERS } from 'core/auth/providers';
 import { ORDER_PROVIDERS } from 'core/order/providers';
 import { CLIENT_PROVIDERS } from 'core/client/providers';
 import { STAFF_PROVIDERS } from 'core/staff/providers';
+import { PROFILE_PROVIDERS } from 'core/profile/providers';
 
 // global styles
 import './styles/styles.scss';
@@ -29,5 +30,6 @@ bootstrap(App, [
   ORDER_PROVIDERS,
   CLIENT_PROVIDERS,
   STAFF_PROVIDERS,
+  PROFILE_PROVIDERS,
   provide(APP_BASE_HREF, {useValue: '/'})
 ]).catch((error: Error) => console.error(error));
