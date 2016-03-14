@@ -24,7 +24,7 @@ export class Profile {
             'phone': ['', Validators.required]
         });
 
-    this.profile.valueChanges.subscribe(function(value: any): any {
+	  this.profile.valueChanges.subscribe((value: any) => {
         this.profileService.getRef().set(value);
     }.bind(this));
   }
