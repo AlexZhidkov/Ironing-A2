@@ -18,7 +18,8 @@
     "clean": "del-cli ./target",
     "postinstall": "typings install",
     "start": "webpack-dev-server --config webpack.dev.js --progress",
-    "test": "karma start --single-run"
+    "test": "karma start --single-run",
+    "coveralls": "node ./node_modules/coveralls/bin/coveralls.js < ./report/remap/lcov.info"
   },
   "dependencies": {
     "angular2": "2.0.0-beta.8",
@@ -31,6 +32,7 @@
     "autoprefixer": "~6.3.3",
     "browser-sync": "~2.11.1",
     "connect-history-api-fallback": "~1.1.0",
+    "coveralls": "^2.11.8",
     "css-loader": "~0.23.1",
     "del": "~2.2.0",
     "del-cli": "~0.2.0",
@@ -41,6 +43,7 @@
     "html-webpack-plugin": "~1.7.0",
     "jasmine-core": "~2.4.1",
     "karma": "~0.13.21",
+    "karma-coverage": "~0.5.5",
     "karma-chrome-launcher": "~0.2.2",
     "karma-jasmine": "~0.3.7",
     "karma-sourcemap-loader": "~0.3.7",
