@@ -9,7 +9,16 @@ module.exports = function(config) {
     ],
 
     preprocessors: {
-      'karma.entry.js': ['webpack', 'sourcemap']
+      'karma.entry.js': ['webpack', 'sourcemap'],
+      'app/**/!(*.spec)+(.js)': ['coverage'],
+    },
+    
+    // Generate json used for remap-istanbul
+    coverageReporter: {
+      dir: 'report/',
+      reporters: [
+        { type: 'json', subdir: 'report-json' }
+      ]
     },
 
     // webpack config
@@ -20,7 +29,7 @@ module.exports = function(config) {
       noInfo: true
     },
 
-    reporters: ['dots'],
+    reporters: ['dots', 'coverage'],
 
     logLevel: config.LOG_INFO,
 
