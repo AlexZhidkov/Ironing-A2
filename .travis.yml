@@ -22,6 +22,7 @@ script:
 
 after_success:
   - ./scripts/deploy1.sh
+  - npm run-script coveralls
 
 notifications:
   email:
