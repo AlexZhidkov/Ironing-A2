@@ -24,8 +24,8 @@ export class Profile {
             'phone': ['', Validators.required]
         });
 
-    this.profile.valueChanges.subscribe((value: any) => {
-        this.profileService.getRef().set(value);
-    }.bind(this));
+ //   this.profile.valueChanges.subscribe((value: any) => {
+ //       this.profileService.getRef().set(value);
+ //   }.bind(this));
   }
 }

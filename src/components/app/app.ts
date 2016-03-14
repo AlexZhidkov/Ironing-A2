@@ -8,6 +8,7 @@ import { OrderForm } from '../orders/order-form/order-form';
 import { Orders } from '../orders/orders';
 import { Clients } from '../clients/clients';
 import { Staff } from '../staff/staff';
+import { Prices } from '../prices/prices';
 import { Profile } from '../profile/profile';
 
 const styles: string = require('./app.scss');
@@ -19,6 +20,7 @@ export var APP_ROUTES: RouteDefinition[] = [
     {path: '/orders', component: Orders, as: 'Orders'},
     {path: '/clients', component: Clients, as: 'Clients'},
     {path: '/staff', component: Staff, as: 'Staff'},
+    {path: '/prices', component: Prices, as: 'Prices'},
     {path: '/profile', component: Profile, as: 'Profile'}
 ];
 

@@ -1,0 +1,40 @@
+<div
+  [ngClass]="{'price-item--completed': model.completed, 'price-item--editing': editing}"
+  class="price-item"
+  tabindex="0">
+
+   <div class="cell">
+    <div
+      class="price-item__name"
+      tabindex="0">
+      {{ model.key }} - ${{(model.value/100).toFixed(2)}}
+    </div>
+  </div>
+
+  <div class="cell">
+    <button
+      *ngIf="editing"
+      (click)="stopEditing()"
+      aria-label="Cancel editing"
+      class="price-item__button"
+      type="button">
+      <span class="icon material-icons">&#xe14c;</span>
+    </button>
+    <button
+      *ngIf="!editing"
+      (click)="editTitle()"
+      aria-label="Edit task title"
+      class="task-item__button"
+      type="button">
+      <span class="icon material-icons">edit</span>
+    </button>
+    <button
+      *ngIf="!editing"
+      (click)="delete()"
+      aria-label="Delete task"
+      class="task-item__button"
+      type="button">
+      <span class="icon material-icons">delete</span>
+    </button>
+  </div>
+</div>
