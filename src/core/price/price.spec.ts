@@ -24,6 +24,6 @@ describe('Price', () => {
   });
 
   it('should set value with provided 1234 param', () => {
-    expect(price.name).toBe(1234);
+    expect(price.value).toBe(1234);
   });
 });
