@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from 'angular2/core';
-import { RouterLink, RouteParams } from 'angular2/router';
+import { RouterLink } from 'angular2/router';
 import { List } from 'immutable';
 import { ReplaySubject } from 'rxjs/subject/ReplaySubject';
 import { PriceItem } from '../price-item/price-item';
@@ -22,6 +22,6 @@ const template: string = require('./price-list.html');
 export class PriceList {
   @Input() prices: ReplaySubject<List<any>>;
 
-  constructor(params: RouteParams) {
-  }
+  constructor() {}
+
 }

@@ -1,65 +1,26 @@
-<div
-  [ngClass]="{'price-item--completed': model.completed, 'price-item--editing': editing}"
-  class="price-item"
-  tabindex="0">
+<div [ngClass]="{'price-item--completed': model.completed, 'price-item--editing': editing}" class="price-item" tabindex="0">
 
-   <div class="cell">
-    <div
-      *ngIf="!editing"
-      class="price-item__name"
-      tabindex="0">
-      {{ model.key }} - ${{model.value.toFixed(2)}}
+<div class="cell">
+    <div class="cell">
+        <button *ngIf="editing" (click)="stopEditing()" aria-label="Cancel editing" class="price-item__button" type="button">
+            <span class="icon material-icons">&#xe14c;</span>
+        </button>
+        <button *ngIf="!editing" (click)="editPrice()" aria-label="Edit price" class="price-item__button" type="button">
+            <span class="icon material-icons">edit</span>
+        </button>
     </div>
-    <form class="task-form" *ngIf="editing" (ngSubmit)="saveTitle()" novalidate>
-      <input
-        ngControl="key"
-        [(ngModel)]="key"
-        autocomplete="off"
-        autofocus
-        class="task-item__input"
-        type="text">
-      <input
-        ngControl="value"
-        [(ngModel)]="value"
-        autocomplete="off"
-        autofocus
-        class="task-item__input"
-        type="number" min="1" step="any">
-    </form>
-</div>
 
-  <div class="cell">
-    <button
-      *ngIf="editing"
-      (click)="saveTitle()"
-      aria-label="Save"
-      class="price-item__button"
-      type="button">
-      <span class="icon material-icons">save</span>
-    </button>
-    <button
-      *ngIf="editing"
-      (click)="stopEditing()"
-      aria-label="Cancel editing"
-      class="price-item__button"
-      type="button">
-      <span class="icon material-icons">&#xe14c;</span>
-    </button>
-    <button
-      *ngIf="!editing"
-      (click)="editTitle()"
-      aria-label="Edit task title"
-      class="task-item__button"
-      type="button">
-      <span class="icon material-icons">edit</span>
-    </button>
-    <button
-      *ngIf="!editing"
-      (click)="delete()"
-      aria-label="Delete task"
-      class="task-item__button"
-      type="button">
-      <span class="icon material-icons">delete</span>
-    </button>
-  </div>
+    <div class="price-item__name" tabindex="1">
+        {{ model.name }} - $
+    </div>
+    <div class="cell">
+        <div *ngIf="!editing" class="price-item__name" tabindex="0">
+            {{ model.price }}
+        </div>
+        <form class="price-form" *ngIf="editing" (ngSubmit)="saveTitle()" novalidate>
+            <input (blur)="stopEditing()" (keyup.escape)="stopEditing()" ngControl="price" [(ngModel)]="price" autocomplete="off" autofocus
+            class="price-item__input" type="number" min="1" step="any">
+        </form>
+    </div>
 </div>
+    

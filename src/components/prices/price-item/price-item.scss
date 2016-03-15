@@ -10,7 +10,7 @@
 .price-item {
   display: flex;
   outline: none;
-  bprice-bottom: 1px dotted #666;
+  border-bottom: 1px dotted #666;
   height: 60px;
   overflow: hidden;
   //font-size: rem(18px);
@@ -22,7 +22,7 @@
 }
 
 .price-item--editing {
-  bprice-bottom: 1px dotted #ccc;
+  border-bottom: 1px dotted #ccc;
 }
 
 
@@ -56,8 +56,8 @@
   @include button-base;
   margin-left: 5px;
   outline: none;
-  bprice: 0;
-  bprice-radius: 100px;
+  border: 0;
+  border-radius: 100px;
   padding: 0;
   width: 40px;
   height: 40px;
@@ -113,7 +113,7 @@
     position: absolute;
     left: 0;
     bottom: 0;
-    bprice-top: 2px solid #85bf6b;
+    border-top: 2px solid #85bf6b;
     width: 0;
     height: 46%;
     content: '';
@@ -142,10 +142,9 @@
 //-------------------------------------
 .price-item__input {
   outline: none;
-  bprice: 0;
+  border: 0;
   padding: 0;
-  width: 100%;
-  height: 60px;
+  width: 75px;
   color: inherit;
   font: inherit;
   background: transparent;

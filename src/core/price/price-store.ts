@@ -26,9 +26,7 @@ export class PriceStore {
     let key: string = snapshot.key();
     let index: number = this.findIndex(key);
     if (index === -1) {
-      let price = new Price();
-      price.key = key;
-      price.value = snapshot.val();
+      let price = new Price(key, snapshot.val());
       this.list = this.list.push(price);
       this.emit();
     }
@@ -46,16 +44,15 @@ export class PriceStore {
     let key: string = snapshot.key();
     let index: number = this.findIndex(key);
     if (index !== -1) {
-      let price: IPrice = snapshot.val();
-      price.key = key;
+      let price = new Price(key, snapshot.val());
       this.list = this.list.set(index, price);
       this.emit();
     }
   }
 
-  private findIndex(key: string): number {
+  private findIndex(name: string): number {
     return this.list.findIndex((price: IPrice) => {
-      return price.key === key;
+      return price.name === name;
     });
   }
 }

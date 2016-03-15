@@ -19,11 +19,10 @@ describe('Price', () => {
   let price: Price;
 
   beforeEach(() => {
-    price = new Price();
-    price.value = 1234;
+    price = new Price('test', 1234);
   });
 
   it('should set value with provided 1234 param', () => {
-    expect(price.value).toBe(1234);
+    expect(price.price).toBe(1234);
   });
 });

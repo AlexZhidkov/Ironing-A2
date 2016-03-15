@@ -5,7 +5,7 @@ export class PriceService {
     constructor(private ref: Firebase) { }
 
     createPrice(price: IPrice): void {
-        this.ref.push(price, (error: Error) => {
+        this.ref.child(price.name).set(price.price, (error: Error) => {
             if (error) {
                 console.error('ERROR @ createPrice :', error);
             }
@@ -13,15 +13,15 @@ export class PriceService {
     }
 
     deletePrice(price: IPrice): void {
-        this.ref.child(price.key).remove((error: Error) => {
+        this.ref.child(price.name).remove((error: Error) => {
             if (error) {
                 console.error('ERROR @ deletePrice :', error);
             }
         });
     }
 
-    updatePrice(price: IPrice, changes: any): void {
-        this.ref.child(price.key).update(changes, (error: Error) => {
+    updatePrice(name: string, price: number): void {
+        this.ref.child(name).set(price, (error: Error) => {
             if (error) {
                 console.error('ERROR @ updatePrice :', error);
             }

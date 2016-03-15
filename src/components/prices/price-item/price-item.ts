@@ -20,7 +20,7 @@ export class PriceItem {
   @Input() model: IPrice;
 
   editing: boolean = false;
-  value: number = 0;
+  price: number = 0;
 
   constructor(private priceService: PriceService) {}
 
@@ -28,16 +28,16 @@ export class PriceItem {
     this.priceService.deletePrice(this.model);
   }
 
-  editTitle(): void {
+  editPrice(): void {
     this.editing = true;
-    this.value = this.model.value;
+    this.price = this.model.price;
   }
 
   saveTitle(): void {
     if (this.editing) {
-      const value: number = this.value;
-      if (value > 0 && value !== this.model.value) {
-        this.priceService.updatePrice(this.model, {value});
+      const price: number = this.price;
+      if (price > 0 && price !== this.model.price) {
+        this.priceService.updatePrice(this.model.name, price );
       }
       this.stopEditing();
     }

@@ -1,12 +1,14 @@
 export interface IPrice {
-    key: string;
-    value: number;
+    name: string;
+    price: number;
 }
 
 export class Price implements IPrice {
-    key: string;
-    value: number;
+    name: string;
+    price: number;
 
-    constructor() {
+    constructor(name: string, price: number) {
+        this.name = name;
+        this.price = price;
     }
 }
