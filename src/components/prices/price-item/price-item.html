@@ -31,6 +31,14 @@
   <div class="cell">
     <button
       *ngIf="editing"
+      (click)="saveTitle()"
+      aria-label="Save"
+      class="price-item__button"
+      type="button">
+      <span class="icon material-icons">save</span>
+    </button>
+    <button
+      *ngIf="editing"
       (click)="stopEditing()"
       aria-label="Cancel editing"
       class="price-item__button"
