@@ -5,14 +5,13 @@
 
    <div class="cell">
     <div
+      *ngIf="!editing"
       class="price-item__name"
       tabindex="0">
       {{ model.key }} - ${{model.value.toFixed(2)}}
     </div>
     <form class="task-form" *ngIf="editing" (ngSubmit)="saveTitle()" novalidate>
       <input
-        (blur)="stopEditing()"
-        (keyup.escape)="stopEditing()"
         ngControl="key"
         [(ngModel)]="key"
         autocomplete="off"
@@ -20,14 +19,12 @@
         class="task-item__input"
         type="text">
       <input
-        (blur)="stopEditing()"
-        (keyup.escape)="stopEditing()"
         ngControl="value"
         [(ngModel)]="value"
         autocomplete="off"
         autofocus
         class="task-item__input"
-        type="text">
+        type="number" min="1" step="any">
     </form>
 </div>
 
