@@ -23,10 +23,10 @@ A simple Todo app built with **Angular 2**. The app features a **Firebase** back
 
 ## Quick Start
 ```bash
-$ git clone https://github.com/AlexZhidkov/ironing.git
-$ cd ironing
+$ git clone https://github.com/r-park/todo-angular2-firebase.git
+$ cd todo-angular2-firebase
 $ npm install
-$ ./node_modules/.bin/gulp
+$ npm start
 ```
 
 
@@ -65,6 +65,10 @@ $ npm install
 #### Develop
 ```bash
 $ gulp
+```
+or
+```bash
+$ npm start
 ```
 - Start the Webpack dev server at <a href="http://localhost:3000" target="_blank">localhost:3000</a>
 - Watch for changes to your source files
