@@ -1,22 +1,54 @@
 import { EventEmitter } from 'angular2/core';
-
+import { IUser, User } from './user';
 
 export class AuthService {
   private authData: FirebaseAuthData;
-  private emitter: EventEmitter<any> = new EventEmitter();
+  private emitter: EventEmitter<any> = new EventEmitter();  
+  user: IUser = new User();
+
 
   constructor(private ref: Firebase) {
     this.authData = this.ref.getAuth();
 
     this.ref.onAuth((authData: FirebaseAuthData) => {
       this.authData = authData;
+      if(authData !== null) {
+           this.getRole(this.ref.child('staff').child(authData.uid), function(val) {
+                console.log(val);
+                this.user.role = val;
+            });
+          //this.ref.child('staff').child(authData.uid).once('value', function(dataSnapshot) {
+              //this.test(dataSnapshot.val()['role'])
+              //user.role = dataSnapshot.val()['role'];
+        //this.user.role = dataSnapshot.val().role;
+        //};
+
+        this.user.id = authData.uid;
+        if (authData.provider == 'google') {
+            this.user.name = authData['google']['displayName'];
+            this.user.imageUrl = authData['google']['profileImageURL'];
+        }
+      }
+      console.log(this.user);
       this.emit();
     });
   }
+  
+  private getRole(ref, cb) {
+    ref.once('value', function(dataSnapshot) {
+      cb(dataSnapshot.val()['role']);
+    });
+  }
+
 
   get authenticated(): boolean {
     return this.authData !== null && !this.expired;
   }
+  
+  get currentUser(): IUser {
+    return this.authenticated ? this.user : null;
+  }
+
 
   get expired(): boolean {
     return !this.authData || (this.authData.expires * 1000) < Date.now();
