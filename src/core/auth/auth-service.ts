@@ -12,17 +12,11 @@ export class AuthService {
 
     this.ref.onAuth((authData: FirebaseAuthData) => {
       this.authData = authData;
-      if(authData !== null) {
-           this.getRole(this.ref.child('staff').child(authData.uid), function(val) {
+      if (authData !== null) {
+           this.getRole(this.ref.child('staff').child(authData.uid), function(val : string, user : IUser) : void {
                 console.log(val);
-                this.user.role = val;
+                user.role = val;
             });
-          //this.ref.child('staff').child(authData.uid).once('value', function(dataSnapshot) {
-              //this.test(dataSnapshot.val()['role'])
-              //user.role = dataSnapshot.val()['role'];
-        //this.user.role = dataSnapshot.val().role;
-        //};
-
         this.user.id = authData.uid;
         if (authData.provider == 'google') {
             this.user.name = authData['google']['displayName'];
@@ -34,9 +28,9 @@ export class AuthService {
     });
   }
   
-  private getRole(ref, cb) {
+  private getRole(ref: string, cb: any): void {
     ref.once('value', function(dataSnapshot) {
-      cb(dataSnapshot.val()['role']);
+      cb(dataSnapshot.val()['role'], this.user);
     });
   }
 
