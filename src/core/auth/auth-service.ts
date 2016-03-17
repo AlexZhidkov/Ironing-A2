@@ -18,8 +18,10 @@ export class AuthService {
             });
         this.user.id = authData.uid;
         if (authData.provider === 'google') {
+            /* tslint:disable:no-string-literal */
             this.user.name = authData['google']['displayName'];
             this.user.imageUrl = authData['google']['profileImageURL'];
+            /* tsslint:enable:no-string-literal */
         }
       }
       console.log(this.user);
@@ -67,7 +69,8 @@ export class AuthService {
 
   private getRole(ref: string, cb: any): void {
     ref.once('value', function(snapshot: FirebaseDataSnapshot): void {
-      cb(snapshot.val()['role'], this.user);
+      let staff: IStaff = snapshot.val();
+      cb(staff.role, this.user);
     });
   }
 
