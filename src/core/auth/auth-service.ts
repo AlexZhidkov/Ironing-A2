@@ -13,6 +13,7 @@ export class AuthService {
     this.ref.onAuth((authData: FirebaseAuthData) => {
       this.authData = authData;
       if (authData !== null) {
+        console.log(this);
         this.user.role = this.staffService.getStaffRole(authData.uid);
         this.user.id = authData.uid;
         if (authData.provider === 'google') {
