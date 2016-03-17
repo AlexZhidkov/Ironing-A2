@@ -1,21 +1,19 @@
 import { EventEmitter } from 'angular2/core';
 import { IUser, User } from './user';
+import { StaffService } from 'core/staff/staff-service';
 
 export class AuthService {
   private authData: FirebaseAuthData;
   private emitter: EventEmitter<any> = new EventEmitter();
   private user: IUser = new User();
 
-  constructor(private ref: Firebase) {
+  constructor(private ref: Firebase, private staffService: StaffService) {
     this.authData = this.ref.getAuth();
 
     this.ref.onAuth((authData: FirebaseAuthData) => {
       this.authData = authData;
       if (authData !== null) {
-           this.getRole(this.ref.child('staff').child(authData.uid), function(val: string, user: IUser): void {
-                console.log(val);
-                user.role = val;
-            });
+        this.user.role = this.staffService.getStaffRole(authData.uid);
         this.user.id = authData.uid;
         if (authData.provider === 'google') {
             /* tslint:disable:no-string-literal */
