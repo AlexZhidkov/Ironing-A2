@@ -11,7 +11,7 @@ const template: string = require('./profile.html');
   template
 })
 
-@CanActivate(() => AuthRouteHelper.requireAuth())
+@CanActivate(() => AuthRouteHelper.requireAuth() !== null)
 
 export class Profile {
     profile: ControlGroup;

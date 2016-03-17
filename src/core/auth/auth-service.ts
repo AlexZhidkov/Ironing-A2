@@ -1,39 +1,34 @@
 import { EventEmitter } from 'angular2/core';
 import { IUser, User } from './user';
-import { StaffService } from 'core/staff/staff-service';
 
 export class AuthService {
   private authData: FirebaseAuthData;
   private emitter: EventEmitter<any> = new EventEmitter();
   private user: IUser = new User();
 
-  constructor(private ref: Firebase, private staffService: StaffService) {
+  constructor(private ref: Firebase) {
     this.authData = this.ref.getAuth();
 
     this.ref.onAuth((authData: FirebaseAuthData) => {
       this.authData = authData;
       if (authData !== null) {
-        console.log(this);
         this.user.id = authData.uid;
         if (authData.provider === 'google') {
             this.user.name = authData['google']['displayName'];
             this.user.imageUrl = authData['google']['profileImageURL'];
         }
       }
-      console.log(this.user);
       this.emit();
     });
   }
 
-  get authenticated(): boolean {
-    return this.authData !== null && !this.expired;
+  get authenticated(): IUser {
+    return (this.authData !== null && !this.expired) ? this.currentUser() : null;
   }
 
-  get currentUser(): IUser {
-    console.log(this);
-    this.user.role = this.staffService.getStaffRole(authData.uid);
-    console.log(this.user);
-    return this.authenticated ? this.user : null;
+  currentUser(): IUser {
+    this.getStaffRole().then((role) => this.user.role = role; )
+    return this.user;
   }
 
   get expired(): boolean {
@@ -60,7 +55,7 @@ export class AuthService {
     this.ref.unauth();
   }
 
-  subscribe(next: (authenticated: boolean) => void): any {
+  subscribe(next: (authenticated: IUser) => void): any {
     let subscription = this.emitter.subscribe(next);
     this.emit();
     return subscription;
@@ -92,6 +87,22 @@ export class AuthService {
         }
       });
     });
+  }
+
+  private getStaffRole(): Promise<string> {
+    return new Promise((resolve: (role: string) => void, reject: (reason: Error) => void) => {
+      this.ref.child('staff').child(this.authData.uid).once('value', (snapshot: FirebaseDataSnapshot) => {
+        if (snapshot) {
+           resolve(snapshot.val()['role']);
+        }
+        else {
+          let error = new Error('ERROR @ getStaffRole: empty snapshot');
+          console.error('ERROR @ getStaffRole  :', error);
+          reject(error);
+        }
+      });
+    });
+
   }
 
   private emit(): void {

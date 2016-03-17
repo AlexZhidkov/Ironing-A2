@@ -10,6 +10,7 @@ import { Clients } from '../clients/clients';
 import { Staff } from '../staff/staff';
 import { Prices } from '../prices/prices';
 import { Profile } from '../profile/profile';
+import { IUser, User } from 'core/auth/user';
 
 const styles: string = require('./app.scss');
 const template: string = require('./app.html');
@@ -37,11 +38,11 @@ export var APP_ROUTES: RouteDefinition[] = [
 @RouteConfig(APP_ROUTES)
 
 export class App {
-  authenticated: boolean = false;
+  authenticated: IUser = new User();
   public appRoutes: RouteDefinition[];
 
   constructor(private auth: AuthService, routeHelper: AuthRouteHelper) {
-    auth.subscribe((authenticated: boolean) => {
+    auth.subscribe((authenticated: IUser) => {
       this.authenticated = authenticated;
       this.appRoutes = APP_ROUTES;
     });

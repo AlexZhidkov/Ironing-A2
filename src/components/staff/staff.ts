@@ -15,7 +15,7 @@ const template: string = require('./staff.html');
   template
 })
 
-@CanActivate(() => AuthRouteHelper.requireAuth())
+@CanActivate(() => AuthRouteHelper.requireAuth() !== null)
 
 export class Staff {
   constructor(public staffStore: StaffStore) {}

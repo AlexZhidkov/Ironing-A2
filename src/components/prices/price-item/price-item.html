@@ -15,7 +15,7 @@
     </div>
     <div class="cell">
         <div *ngIf="!editing" class="price-item__name" tabindex="0">
-            {{ model.price | CurrencyPipe}}
+            {{ model.price | currency}}
         </div>
         <form class="price-form" *ngIf="editing" (ngSubmit)="saveTitle()" novalidate>
             <input (blur)="stopEditing()" (keyup.escape)="stopEditing()" ngControl="price" [(ngModel)]="price" autocomplete="off" autofocus

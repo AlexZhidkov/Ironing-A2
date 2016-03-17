@@ -15,7 +15,7 @@ const template: string = require('./clients.html');
   template
 })
 
-@CanActivate(() => AuthRouteHelper.requireAuth())
+@CanActivate(() => AuthRouteHelper.requireAuth() !== null)
 
 export class Clients {
   constructor(public clientStore: ClientStore) {}

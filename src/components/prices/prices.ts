@@ -15,7 +15,7 @@ const template: string = require('./prices.html');
   template
 })
 
-@CanActivate(() => AuthRouteHelper.requireAuth())
+@CanActivate(() => AuthRouteHelper.requireAuth() !== null)
 
 export class Prices {
   constructor(public priceStore: PriceStore) {}

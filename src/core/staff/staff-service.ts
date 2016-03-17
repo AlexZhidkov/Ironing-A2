@@ -4,16 +4,6 @@ import { IStaff } from './staff';
 export class StaffService {
     constructor(private ref: Firebase, private authId: string) { }
 
-    getStaffRole(key: string): string {
-        let role = '';
-        this.ref.child(key).once((snapshot: FirebaseDataSnapshot) => {
-            if (snapshot) {
-                role = snapshot.val()['role'];
-            }
-        });
-        return role;
-    }
-
     createStaff(staff: IStaff): void {
         this.ref.push(staff, (error: Error) => {
             if (error) {
