@@ -14,13 +14,10 @@ export class AuthService {
       this.authData = authData;
       if (authData !== null) {
         console.log(this);
-        this.user.role = this.staffService.getStaffRole(authData.uid);
         this.user.id = authData.uid;
         if (authData.provider === 'google') {
-            /* tslint:disable:no-string-literal */
             this.user.name = authData['google']['displayName'];
             this.user.imageUrl = authData['google']['profileImageURL'];
-            /* tsslint:enable:no-string-literal */
         }
       }
       console.log(this.user);
@@ -33,6 +30,9 @@ export class AuthService {
   }
 
   get currentUser(): IUser {
+    console.log(this);
+    this.user.role = this.staffService.getStaffRole(authData.uid);
+    console.log(this.user);
     return this.authenticated ? this.user : null;
   }
 
