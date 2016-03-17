@@ -12,7 +12,7 @@ export class AuthService {
     this.ref.onAuth((authData: FirebaseAuthData) => {
       this.authData = authData;
       if (authData !== null) {
-           this.getRole(this.ref.child('staff').child(authData.uid), function(val : string, user : IUser) : void {
+           this.getRole(this.ref.child('staff').child(authData.uid), function(val: string, user: IUser): void {
                 console.log(val);
                 user.role = val;
             });
