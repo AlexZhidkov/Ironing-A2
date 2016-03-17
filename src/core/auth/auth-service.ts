@@ -65,13 +65,6 @@ export class AuthService {
     return subscription;
   }
 
-  private getRole(ref: string, cb: any): void {
-    ref.once('value', function(snapshot: FirebaseDataSnapshot): void {
-      let staff: IStaff = snapshot.val();
-      cb(staff.role, this.user);
-    });
-  }
-
   private authWithOAuth(provider: string): Promise<any> {
     return new Promise((resolve: () => void, reject: (reason: Error) => void) => {
       this.ref.authWithOAuthPopup(provider, (error: Error) => {
