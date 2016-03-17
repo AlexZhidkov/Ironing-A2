@@ -42,6 +42,8 @@ export class SignIn {
   }
 
   private postSignIn(): void {
+    let user = this.auth.currentUser();
+    console.log(user);
     // this.router.navigate(['/Order Form']);
   }
 }
