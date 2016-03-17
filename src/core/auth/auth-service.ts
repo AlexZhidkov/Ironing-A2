@@ -3,9 +3,8 @@ import { IUser, User } from './user';
 
 export class AuthService {
   private authData: FirebaseAuthData;
-  private emitter: EventEmitter<any> = new EventEmitter();  
-  user: IUser = new User();
-
+  private emitter: EventEmitter<any> = new EventEmitter();
+  private user: IUser = new User();
 
   constructor(private ref: Firebase) {
     this.authData = this.ref.getAuth();
@@ -18,7 +17,7 @@ export class AuthService {
                 user.role = val;
             });
         this.user.id = authData.uid;
-        if (authData.provider == 'google') {
+        if (authData.provider === 'google') {
             this.user.name = authData['google']['displayName'];
             this.user.imageUrl = authData['google']['profileImageURL'];
         }
@@ -27,22 +26,14 @@ export class AuthService {
       this.emit();
     });
   }
-  
-  private getRole(ref: string, cb: any): void {
-    ref.once('value', function(dataSnapshot) {
-      cb(dataSnapshot.val()['role'], this.user);
-    });
-  }
-
 
   get authenticated(): boolean {
     return this.authData !== null && !this.expired;
   }
-  
+
   get currentUser(): IUser {
     return this.authenticated ? this.user : null;
   }
-
 
   get expired(): boolean {
     return !this.authData || (this.authData.expires * 1000) < Date.now();
@@ -72,6 +63,12 @@ export class AuthService {
     let subscription = this.emitter.subscribe(next);
     this.emit();
     return subscription;
+  }
+
+  private getRole(ref: string, cb: any): void {
+    ref.once('value', function(snapshot: FirebaseDataSnapshot): void {
+      cb(snapshot.val()['role'], this.user);
+    });
   }
 
   private authWithOAuth(provider: string): Promise<any> {
