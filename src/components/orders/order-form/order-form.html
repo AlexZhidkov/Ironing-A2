@@ -1,21 +1,29 @@
-<header class="header">
-    <div class="g-row">
-        <img src="WLILogo2016land.png" alt="We Love Ironing" width="150" />
-
-        <ul class="header__links">
-            <li *ngIf="authenticated"><a class="header__link" (click)="signOut()" href="javascript:">Sign out</a></li>
-            <li><a class="header__link" href="http://www.weloveironing.com.au/">Go Back</a></li>
-        </ul>
-    </div>
+<header class="mdl-layout__header">
+    <a class="header__link" href="http://www.weloveironing.com.au/"><img src="WLILogo2016land.png" alt="We Love Ironing" width="150" /></a>
 </header>
 
-<div class="col-md-4">
-    <form class="form" [ngFormModel]="order" (submit)="submit($event)">
-        <input class="form-control" ngControl="name" type="text" placeholder="Name">
-        <input class="form-control" ngControl="email" type="email" placeholder="Email">
-        <input class="form-control" ngControl="phone" type="text" placeholder="Phone">
-        <input class="form-control" ngControl="address" type="text" placeholder="Address">
-        <textarea class="form-control" rows="6" ngControl="message" placeholder="Message"></textarea>
-        <button class="button pull-right" type="submit">Submit</button>
-    </form>
-</div>
+<form action="#" [ngFormModel]="order" (submit)="submit($event)">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" ngControl="name" type="text" id="Name">
+        <label class="mdl-textfield__label" for="Name">Name</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" ngControl="email" type="email" id="Email">
+        <label class="mdl-textfield__label" for="Email">Email</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" ngControl="phone" type="number" id="Phone">
+        <label class="mdl-textfield__label" for="Phone">Phone</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" ngControl="address" type="text" id="Address">
+        <label class="mdl-textfield__label" for="Address">Address</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <textarea class="mdl-textfield__input" type="text" rows="6" id="message"></textarea>
+        <label class="mdl-textfield__label" for="message">Message</label>
+    </div>
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit">
+        Submit
+    </button>
+</form>

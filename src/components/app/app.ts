@@ -1,7 +1,6 @@
 import { Component } from 'angular2/core';
 import { RouteConfig, RouterOutlet, RouteDefinition } from 'angular2/router';
 import { AuthRouteHelper } from 'core/auth/auth-route-helper';
-import { NavbarComponent } from '../dashboard/navbar';
 import { AuthService } from 'core/auth/auth-service';
 import { SignIn } from '../sign-in/sign-in';
 import { OrderForm } from '../orders/order-form/order-form';
@@ -27,8 +26,7 @@ export var APP_ROUTES: RouteDefinition[] = [
 
 @Component({
   directives: [
-    RouterOutlet,
-    NavbarComponent
+    RouterOutlet
   ],
   selector: 'app',
   styles: [styles],

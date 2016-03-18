@@ -1,9 +1,13 @@
-<div class="client-item" tabindex="0">
-  <div class="cell">
-    <div
-      class="client-item__name"
-      tabindex="0">
-      {{ model.name }}, {{model.email}}, {{model.phone}}, {{model.address}}, {{model.lastOrderAt}}
-    </div>
-  </div>
-</div>
+<li class="mdl-list__item mdl-list__item--three-line">
+    <span class="mdl-list__item-primary-content">
+      <i class="material-icons mdl-list__item-avatar">person</i>
+      <span>{{ model.name }}</span>
+      <span class="mdl-list__item-text-body">
+          <div>{{model.address}} </div>
+          <div>{{model.phone}}, {{model.email}} </div>
+      </span>
+    </span>
+    <span class="mdl-list__item-secondary-content">
+      <a class="mdl-list__item-secondary-action" href="#">{{model.lastOrderAt | date }}</a>
+    </span>
+</li>

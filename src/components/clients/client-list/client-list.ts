@@ -5,6 +5,7 @@ import { ReplaySubject } from 'rxjs/subject/ReplaySubject';
 import { ClientItem } from '../client-item/client-item';
 
 const template: string = require('./client-list.html');
+const style: string = require('./client-list.scss');
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -13,6 +14,7 @@ const template: string = require('./client-list.html');
     ClientItem
   ],
   selector: 'client-list',
+  styles: [style],
   template
 })
 

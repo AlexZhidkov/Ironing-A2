@@ -27,7 +27,7 @@ export class AuthService {
   }
 
   currentUser(): IUser {
-    this.getStaffRole().then((role) => this.user.role = role; )
+    this.getStaffRole().then((role) => this.user.role = role);
     return this.user;
   }
 

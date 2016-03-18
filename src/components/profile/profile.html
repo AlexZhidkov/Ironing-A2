@@ -1,7 +1,14 @@
-<div class="col-md-4">
-    <form class="form" [(ngFormModel)]="profile" (submit)="submit($event)">
-        <input class="form-control" ngControl="name" type="text" placeholder="Name">
-        <input class="form-control" ngControl="email" type="email" placeholder="Email">
-        <input class="form-control" ngControl="phone" type="text" placeholder="Phone">
-    </form>
-</div>
+<form action="#" [ngFormModel]="profile" (submit)="submit($event)">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" ngControl="name" type="text" id="Name">
+        <label class="mdl-textfield__label" for="Name">Name</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" ngControl="email" type="text" id="Email">
+        <label class="mdl-textfield__label" for="Email">Email</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" ngControl="phone" type="number" id="Phone">
+        <label class="mdl-textfield__label" for="Phone">Phone</label>
+    </div>
+</form>

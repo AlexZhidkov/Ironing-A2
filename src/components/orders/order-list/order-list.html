@@ -1,9 +1,11 @@
-<ul class="order-filters">
-  <li><a [class.active]="!filter" [routerLink]="['/Orders']">View All</a></li>
-  <li><a [class.active]="filter == 'active'" [routerLink]="['/Orders', {filter: 'active'}]">Active</a></li>
-  <li><a [class.active]="filter == 'completed'" [routerLink]="['/Orders', {filter: 'completed'}]">Completed</a></li>
-</ul>
+<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+    <div class="mdl-tabs__tab-bar">
+        <a href="#starks-panel" class="mdl-tabs__tab is-active" [class.active]="!filter" [routerLink]="['/Orders']">View All</a>
+        <a href="#lannisters-panel" class="mdl-tabs__tab" [class.active]="filter == 'active'" [routerLink]="['/Orders', {filter: 'active'}]">Active</a>
+        <a href="#targaryens-panel" class="mdl-tabs__tab" [class.active]="filter == 'completed'" [routerLink]="['/Orders', {filter: 'completed'}]">Completed</a>
+    </div>
 
-<div class="order-list">
-  <order-item [model]="order" *ngFor="#order of orders | async | filterOrders:filter"></order-item>
+    <div class="mdl-tabs__panel">
+        <order-item [model]="order" *ngFor="#order of orders | async | filterOrders:filter"></order-item>
+    </div>
 </div>
