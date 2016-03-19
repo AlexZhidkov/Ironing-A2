@@ -2,7 +2,7 @@ export interface IStaff {
     key?: string;
     name: string;
     email: string;
-    phone: string;
+    phone: number;
     imageUrl: string;
     role: string;
 }
@@ -11,7 +11,7 @@ export interface IStaff {
 export class Staff implements IStaff {
     name: string;
     email: string;
-    phone: string;
+    phone: number;
     imageUrl: string;
     role: string;
 

@@ -21,7 +21,7 @@ export class StaffItem {
 
   editing: boolean = false;
   role: string = '';
-      
+
   constructor(private staffService: StaffService) {}
 
   delete(): void {
