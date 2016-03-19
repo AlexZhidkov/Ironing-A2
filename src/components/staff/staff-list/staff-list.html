@@ -1,4 +1,4 @@
-<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+<!--<div class="mdl-tabs mdl-js-tabs">
     <div class="mdl-tabs__tab-bar">
         <a class="mdl-tabs__tab is-active" [class.active]="!filter" [routerLink]="['/Staff']">View All</a>
         <a class="mdl-tabs__tab" [class.active]="filter == 'manager'" [routerLink]="['/Staff', {filter: 'manager'}]">Managers</a>
@@ -10,3 +10,6 @@
         <staff-item [model]="staff" *ngFor="#staff of staff | async | filterStaff:filter"></staff-item>
     </div>
 </div>
+-->
+
+<staff-item [model]="staff" *ngFor="#staff of staff | async "></staff-item>

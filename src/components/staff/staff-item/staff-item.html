@@ -1,48 +1,37 @@
-<div
-  [ngClass]="{'staff-item--completed': model.completed, 'staff-item--editing': editing}"
-  class="staff-item"
-  tabindex="0">
-
-  <div class="cell">
-    <button
-      *ngIf="!editing"
-      (click)="toggleStatus()"
-      aria-label="Mark staff as completed"
-      class="staff-item__button"
-      type="button">
-      <span class="icon material-icons" [ngClass]="{'icon--active': model.completed}">done</span>
-    </button>
-  </div>
-  
-  <div class="cell">
+<div mdl class="mdl-list__item mdl-list__item--three-line">
+    <span class="mdl-list__item-primary-content">
         <img *ngIf="model.imageUrl" class="mdl-list__item-avatar" src={{model.imageUrl}} alt="" />
         <i *ngIf="!model.imageUrl" class="material-icons mdl-list__item-avatar">person</i>
-  </div>
+        <span>
+            {{ model.name }}          
+        </span>
+    <span class="mdl-list__item-text-body">
+          <div>{{model.address}} </div>
+          <div>{{model.phone}}, {{model.email}} </div>
+      </span>
+    </span>
+    <span>
+        <span *ngIf="!editing">{{ model.role }}</span>
+    <form *ngIf="editing" (ngSubmit)="save()" novalidate>
+        <input class="mdl-textfield__input" type="text" ngControl="role" [(ngModel)]="role" autofocus>
+        <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab" type="submit">
+            <i class="material-icons">done</i>
+        </button>
+        <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab" (click)="stopEditing()">
+            <i class="material-icons">cancel</i>
+        </button>
 
-  <div class="cell">
-    <div
-      class="staff-item__name"
-      tabindex="0">
-      {{ model.name }}, {{model.email}}, {{model.phone}}, {{model.address}}, {{model.role}}
-    </div>
-  </div>
+    </form>
+    <button class="mdl-button mdl-js-button mdl-button--fab" *ngIf="!editing" (click)="edit()">
+        <i class="material-icons">edit</i>
+    </button>
 
-  <div class="cell">
-    <button
-      *ngIf="editing"
-      (click)="stopEditing()"
-      aria-label="Cancel editing"
-      class="staff-item__button"
-      type="button">
-      <span class="icon material-icons">&#xe14c;</span>
-    </button>
-    <button
-      *ngIf="!editing"
-      (click)="delete()"
-      aria-label="Delete staff"
-      class="staff-item__button"
-      type="button">
-      <span class="icon material-icons">delete</span>
-    </button>
-  </div>
+    </span>
+    <span class="mdl-list__item-secondary-content">
+        <span>
+      <button class="mdl-button mdl-js-button mdl-button--fab" *ngIf="!editing" (click)="delete()">
+            <i class="material-icons">delete</i>
+        </button>
+    </span>
+    </span>
 </div>

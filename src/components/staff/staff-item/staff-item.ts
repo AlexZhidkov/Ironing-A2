@@ -20,8 +20,8 @@ export class StaffItem {
   @Input() model: IStaff;
 
   editing: boolean = false;
-  name: string = '';
-
+  role: string = '';
+      
   constructor(private staffService: StaffService) {}
 
   delete(): void {
@@ -30,14 +30,14 @@ export class StaffItem {
 
   edit(): void {
     this.editing = true;
-    this.name = this.model.name;
+    this.role = this.model.role;
   }
 
   save(): void {
     if (this.editing) {
-      const name: string = this.name.trim();
-      if (name.length && name !== this.model.name) {
-        this.staffService.updateStaff(this.model, {name});
+      const role: string = this.role.trim();
+      if (role.length && role !== this.model.role) {
+        this.staffService.updateStaff(this.model, {role});
       }
       this.stopEditing();
     }
