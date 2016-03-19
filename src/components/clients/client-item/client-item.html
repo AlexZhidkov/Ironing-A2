@@ -1,6 +1,8 @@
 <li class="mdl-list__item mdl-list__item--three-line">
     <span class="mdl-list__item-primary-content">
-      <i class="material-icons mdl-list__item-avatar">person</i>
+        <img *ngIf="model.imageUrl" class="mdl-list__item-avatar" src={{model.imageUrl}} alt="" />
+        <i *ngIf="!model.imageUrl" class="material-icons mdl-list__item-avatar">person</i>
+    <a class="header__link" href="http://www.weloveironing.com.au/"></a>
       <span>{{ model.name }}</span>
       <span class="mdl-list__item-text-body">
           <div>{{model.address}} </div>

@@ -4,6 +4,7 @@ export interface IClient {
     email: string;
     phone: string;
     address: string;
+    imageUrl: string;
     lastOrderAt: number;
 }
 
@@ -13,6 +14,7 @@ export class Client implements IClient {
     email: string;
     phone: string;
     address: string;
+    imageUrl: string;
     lastOrderAt: number;
 
     constructor() {
