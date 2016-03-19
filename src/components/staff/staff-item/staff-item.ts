@@ -28,12 +28,12 @@ export class StaffItem {
     this.staffService.deleteStaff(this.model);
   }
 
-  editTitle(): void {
+  edit(): void {
     this.editing = true;
     this.name = this.model.name;
   }
 
-  saveTitle(): void {
+  save(): void {
     if (this.editing) {
       const name: string = this.name.trim();
       if (name.length && name !== this.model.name) {

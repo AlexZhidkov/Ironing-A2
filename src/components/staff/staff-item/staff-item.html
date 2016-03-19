@@ -13,6 +13,11 @@
       <span class="icon material-icons" [ngClass]="{'icon--active': model.completed}">done</span>
     </button>
   </div>
+  
+  <div class="cell">
+        <img *ngIf="model.imageUrl" class="mdl-list__item-avatar" src={{model.imageUrl}} alt="" />
+        <i *ngIf="!model.imageUrl" class="material-icons mdl-list__item-avatar">person</i>
+  </div>
 
   <div class="cell">
     <div
