@@ -22,7 +22,7 @@ export class AuthRouteHelper {
   static requireUnauth(): boolean {
     const { auth, router } = AuthRouteHelper;
     if (auth.authenticated) router.navigate(['/Order Form']);
-    return true;
+    return (auth.authenticated === null);
   }
 
   constructor(auth: AuthService, router: Router) {

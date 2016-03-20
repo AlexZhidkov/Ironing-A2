@@ -1,27 +1,39 @@
 <header class="mdl-layout__header">
-    <a class="header__link" href="http://www.weloveironing.com.au/"><img src="WLILogo2016land.png" alt="We Love Ironing" width="150" /></a>
+    <a class="header__link" href="http://www.weloveironing.com.au/"><img src="WLILogo2016land.png" alt="www.weloveironing.com.au" width="150" /></a>
 </header>
 
 <form action="#" [ngFormModel]="order" (submit)="submit($event)">
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" ngControl="name" type="text" id="Name">
-        <label class="mdl-textfield__label" for="Name">Name</label>
-    </div>
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" ngControl="email" type="email" id="Email">
-        <label class="mdl-textfield__label" for="Email">Email</label>
-    </div>
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" ngControl="phone" type="number" id="Phone">
-        <label class="mdl-textfield__label" for="Phone">Phone</label>
-    </div>
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" ngControl="address" type="text" id="Address">
-        <label class="mdl-textfield__label" for="Address">Address</label>
-    </div>
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <textarea class="mdl-textfield__input" type="text" rows="6" id="message"></textarea>
-        <label class="mdl-textfield__label" for="message">Message</label>
+    <div>
+        <div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" ngControl="name" type="text" id="Name">
+                <label class="mdl-textfield__label" for="Name">Name</label>
+            </div>
+        </div>
+        <div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" ngControl="email" type="email" id="Email">
+                <label class="mdl-textfield__label" for="Email">Email</label>
+            </div>
+        </div>
+        <div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" ngControl="phone" type="number" id="Phone">
+                <label class="mdl-textfield__label" for="Phone">Phone</label>
+            </div>
+        </div>
+        <div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" ngControl="address" type="text" id="Address">
+                <label class="mdl-textfield__label" for="Address">Address</label>
+            </div>
+        </div>
+        <div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <textarea class="mdl-textfield__input" type="text" rows="6" id="message"></textarea>
+                <label class="mdl-textfield__label" for="message">Message</label>
+            </div>
+        </div>
     </div>
     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit">
         Submit
