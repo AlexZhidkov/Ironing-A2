@@ -4,11 +4,14 @@ import { CanActivate } from 'angular2/router';
 import { AuthRouteHelper } from 'core/auth/auth-route-helper';
 import { ProfileService } from 'core/profile/profile-service';
 import { IStaff, Staff } from 'core/staff/staff';
+import { ToasterContainerComponent, ToasterService } from 'angular2-toaster/angular2-toaster';
 
 const template: string = require('./profile.html');
 
 @Component({
   selector: 'profile',
+  directives: [ToasterContainerComponent],
+  providers: [ToasterService],
   template
 })
 
@@ -19,7 +22,7 @@ export class Profile {
     builder: FormBuilder;
     person: IStaff = new Staff();
 
-  constructor(public profileService: ProfileService, fb: FormBuilder) {
+  constructor(public profileService: ProfileService, private toasterService: ToasterService, fb: FormBuilder) {
     this.profileService.getStaff().then((staff) => {
         this.person = staff;
     });
@@ -33,6 +36,7 @@ export class Profile {
 
   save(): void {
       this.profileService.saveStaff(this.person);
+      this.toasterService.pop('success', 'Saved', 'Your profile information is updated');
    }
-
+   
 }
