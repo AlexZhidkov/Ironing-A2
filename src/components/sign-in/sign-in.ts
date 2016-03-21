@@ -34,6 +34,11 @@ export class SignIn {
       .then(() => this.postSignIn());
   }
 
+  signInWithTwitter(): void {
+    this.auth.signInWithTwitter()
+      .then(() => this.postSignIn());
+  }
+
   signInAsGuest(): void {
     this.isStaff = false;
     this.auth.signInAsGuest()

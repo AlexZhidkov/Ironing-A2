@@ -54,6 +54,10 @@ export class AuthService {
     return this.authWithOAuth('google');
   }
 
+  signInWithTwitter(): Promise<any> {
+    return this.authWithOAuth('twitter');
+  }
+
   signInAsGuest(): Promise<any> {
     return this.authAnonymously();
   }
