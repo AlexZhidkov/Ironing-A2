@@ -3,6 +3,10 @@ const path = require('path');
 
 
 module.exports = {
+  assets: [
+    {from: 'node_modules/angular2-toaster/lib/toaster.css'}
+  ],
+
   entry: {
     main: './src/main',
     vendor: [
