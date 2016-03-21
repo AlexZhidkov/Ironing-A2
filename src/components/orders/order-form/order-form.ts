@@ -40,7 +40,6 @@ export class OrderForm {
         this.orderService.createOrder(data);
         this.clientService.createOrUpdateClient(data);
 
-        console.log(this.order.value);
         event.preventDefault();
     }
 }

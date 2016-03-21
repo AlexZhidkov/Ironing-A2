@@ -5,6 +5,7 @@ export class AuthService {
   private authData: FirebaseAuthData;
   private emitter: EventEmitter<any> = new EventEmitter();
   private user: IUser = new User();
+  private isStaff: boolean = false;
 
   constructor(private ref: Firebase) {
     this.authData = this.ref.getAuth();
@@ -27,8 +28,14 @@ export class AuthService {
   }
 
   currentUser(): IUser {
-    this.getStaffRole().then((role) => this.user.role = role);
+    this.getStaffRole().then((role) => {
+        this.user.role = role;
+    });
     return this.user;
+  }
+
+  setStaff(isStaff: boolean): void {
+    this.isStaff = isStaff;
   }
 
   get expired(): boolean {
@@ -93,7 +100,10 @@ export class AuthService {
     return new Promise((resolve: (role: string) => void, reject: (reason: Error) => void) => {
       this.ref.child('staff').child(this.authData.uid).once('value', (snapshot: FirebaseDataSnapshot) => {
         if (snapshot) {
-           resolve(snapshot.val()['role']);
+           let staff: IUser = snapshot.val();
+           let role = '';
+           if (staff !== null) role = staff.role;
+           resolve(role);
         }
         else {
           let error = new Error('ERROR @ getStaffRole: empty snapshot');

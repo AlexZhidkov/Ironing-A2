@@ -38,5 +38,4 @@ export class Profile {
       this.profileService.saveStaff(this.person);
       this.toasterService.pop('success', 'Saved', 'Your profile information is updated');
    }
-   
 }

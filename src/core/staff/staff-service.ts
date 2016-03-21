@@ -2,10 +2,10 @@ import { IStaff } from './staff';
 
 
 export class StaffService {
-    constructor(private ref: Firebase, private authId: string) { }
+    constructor(private ref: Firebase) { }
 
-    createStaff(staff: IStaff): void {
-        this.ref.push(staff, (error: Error) => {
+    createStaff(staff: IStaff, id: string): void {
+        this.ref.child(id).set(staff, (error: Error) => {
             if (error) {
                 console.error('ERROR @ createStaff :', error);
             }

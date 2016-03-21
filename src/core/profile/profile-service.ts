@@ -12,8 +12,8 @@ export class ProfileService {
            resolve(newStaff);
         }
         else {
-          let error = new Error('ERROR @ getStaffRole: empty snapshot');
-          console.error('ERROR @ getStaffRole  :', error);
+          let error = new Error('ERROR @ getStaff: empty snapshot');
+          console.error('ERROR @ getStaff  :', error);
           reject(error);
         }
       });
@@ -23,7 +23,7 @@ export class ProfileService {
   saveStaff(changes: IStaff): void {
     this.ref.child(this.authId).update(changes, (error: Error) => {
         if (error) {
-            console.error('ERROR @ updateOrder :', error);
+            console.error('ERROR @ saveStaff :', error);
         }
     });
   }

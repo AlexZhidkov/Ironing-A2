@@ -8,7 +8,7 @@ export const STAFF_PROVIDERS: any[] = [
   provide(StaffService, {
     deps: [AuthService],
     useFactory: (auth: AuthService): StaffService => {
-      return new StaffService(new Firebase(`${FIREBASE_STAFF_URL}`), auth.id);
+      return new StaffService(new Firebase(`${FIREBASE_STAFF_URL}`));
     }
   }),
 
