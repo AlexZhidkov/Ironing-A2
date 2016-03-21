@@ -5,12 +5,15 @@ import { FormBuilder, ControlGroup, Validators } from 'angular2/common';
 import { Order } from 'core/order/order';
 import { OrderService } from 'core/order/order-service';
 import { ClientService } from 'core/client/client-service';
+import { ToasterContainerComponent, ToasterService } from 'angular2-toaster/angular2-toaster';
 
 const styles: string = require('./order-form.scss');
 const template: string = require('./order-form.html');
 
 @Component({
     selector: 'orderForm',
+    directives: [ToasterContainerComponent],
+    providers: [ToasterService],
     styles: [styles],
     template
 })
@@ -20,7 +23,7 @@ const template: string = require('./order-form.html');
 export class OrderForm {
     order: ControlGroup;
     builder: FormBuilder;
-    constructor(private orderService: OrderService, private clientService: ClientService, fb: FormBuilder) {
+    constructor(private orderService: OrderService, private clientService: ClientService, private toasterService: ToasterService, fb: FormBuilder) {
         this.order = fb.group({
             'name': ['', Validators.required],
             'email': ['', Validators.required],
@@ -41,5 +44,6 @@ export class OrderForm {
         this.clientService.createOrUpdateClient(data);
 
         event.preventDefault();
+        this.toasterService.pop('success', 'Saved', 'Your order is submitted');
     }
 }
