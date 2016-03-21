@@ -1,34 +1,32 @@
 <div class="mdl-layout mdl-js-layout">
-    <div *ngIf="authenticated">
-        <header class="mdl-layout__header">
-            <div class="mdl-layout__header-row">
-                <span class="mdl-layout-title">We Love Ironing</span>
-                <!-- Add spacer, to align navigation to the right -->
-                <div class="mdl-layout-spacer"></div>
-                <!-- Navigation -->
-                <nav class="mdl-navigation">
-                    <a class="mdl-navigation__link" href="" (click)="signOut()">Sign Out</a>
-                    <a class="mdl-navigation__link" href="/orderform">Order Form</a>
-                    <a class="mdl-navigation__link" href="/orders">Orders</a>
-                    <a class="mdl-navigation__link" href="/clients" *ngIf="authenticated.role && authenticated.role !== 'new staff'">Clients</a>
-                    <a class="mdl-navigation__link" href="/staff" *ngIf=" authenticated.role =='manager'">Staff</a>
-                    <a class="mdl-navigation__link" href="/prices" *ngIf="authenticated.role =='manager'">Prices</a>
-                    <a class="mdl-navigation__link" href="/profile" *ngIf="authenticated.role">Profile</a>
-                </nav>
-            </div>
-        </header>
-        <div class="mdl-layout__drawer">
+    <header class="mdl-layout__header" *ngIf="authenticated">
+        <div class="mdl-layout__header-row">
             <span class="mdl-layout-title">We Love Ironing</span>
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation -->
             <nav class="mdl-navigation">
-                <a class="mdl-navigation__link" href="">Sign Out</a>
+                <a class="mdl-navigation__link" href="" (click)="signOut()">Sign Out</a>
                 <a class="mdl-navigation__link" href="/orderform">Order Form</a>
                 <a class="mdl-navigation__link" href="/orders">Orders</a>
                 <a class="mdl-navigation__link" href="/clients" *ngIf="authenticated.role && authenticated.role !== 'new staff'">Clients</a>
-                <a class="mdl-navigation__link" href="/staff" *ngIf="authenticated.role =='manager'">Staff</a>
+                <a class="mdl-navigation__link" href="/staff" *ngIf=" authenticated.role =='manager'">Staff</a>
                 <a class="mdl-navigation__link" href="/prices" *ngIf="authenticated.role =='manager'">Prices</a>
                 <a class="mdl-navigation__link" href="/profile" *ngIf="authenticated.role">Profile</a>
             </nav>
         </div>
+    </header>
+    <div class="mdl-layout__drawer" *ngIf="authenticated">
+        <span class="mdl-layout-title">We Love Ironing</span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="">Sign Out</a>
+            <a class="mdl-navigation__link" href="/orderform">Order Form</a>
+            <a class="mdl-navigation__link" href="/orders">Orders</a>
+            <a class="mdl-navigation__link" href="/clients" *ngIf="authenticated.role && authenticated.role !== 'new staff'">Clients</a>
+            <a class="mdl-navigation__link" href="/staff" *ngIf="authenticated.role =='manager'">Staff</a>
+            <a class="mdl-navigation__link" href="/prices" *ngIf="authenticated.role =='manager'">Prices</a>
+            <a class="mdl-navigation__link" href="/profile" *ngIf="authenticated.role">Profile</a>
+        </nav>
     </div>
     <main class="mdl-layout__content">
         <div class="page-content">
