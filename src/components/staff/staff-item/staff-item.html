@@ -11,21 +11,18 @@
       </span>
     </span>
     <span>
-        <span *ngIf="!editing">{{ model.role }}</span>
-    <form *ngIf="editing" (ngSubmit)="save()" novalidate>
-        <input class="mdl-textfield__input" type="text" ngControl="role" [(ngModel)]="role" autofocus>
-        <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab" type="submit">
-            <i class="material-icons">done</i>
+        <button class="mdl-button mdl-js-button mdl-js-ripple-effect" [ngClass]="{'mdl-button--raised mdl-button--accent': model.role === 'manager'}" 
+            (click)="setRole('manager')">
+            Manager
         </button>
-        <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab" (click)="stopEditing()">
-            <i class="material-icons">cancel</i>
+        <button class="mdl-button mdl-js-button mdl-js-ripple-effect" [ngClass]="{'mdl-button--raised mdl-button--accent': model.role === 'driver'}"
+            (click)="setRole('driver')">
+            Driver
         </button>
-
-    </form>
-    <button class="mdl-button mdl-js-button mdl-button--fab" *ngIf="!editing" (click)="edit()">
-        <i class="material-icons">edit</i>
-    </button>
-
+        <button class="mdl-button mdl-js-button mdl-js-ripple-effect" [ngClass]="{'mdl-button--raised mdl-button--accent': model.role === 'ironer'}"
+            (click)="setRole('ironer')">
+            Ironer
+        </button>
     </span>
     <span class="mdl-list__item-secondary-content">
         <span>

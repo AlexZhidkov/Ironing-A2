@@ -20,8 +20,8 @@ export class StaffService {
         });
     }
 
-    updateStaff(staff: IStaff, changes: any): void {
-        this.ref.child(staff.key).update(changes, (error: Error) => {
+    updateStaff(staffKey: string, changes: any): void {
+        this.ref.child(staffKey).update(changes, (error: Error) => {
             if (error) {
                 console.error('ERROR @ updateStaff :', error);
             }

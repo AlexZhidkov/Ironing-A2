@@ -19,31 +19,15 @@ const template: string = require('./staff-item.html');
 export class StaffItem {
   @Input() model: IStaff;
 
-  editing: boolean = false;
-  role: string = '';
-
   constructor(private staffService: StaffService) {}
 
   delete(): void {
     this.staffService.deleteStaff(this.model);
   }
 
-  edit(): void {
-    this.editing = true;
-    this.role = this.model.role;
+  setRole(role: string): void {
+    this.model.role = role;
+    this.staffService.updateStaff(this.model.key, {role: role});
   }
 
-  save(): void {
-    if (this.editing) {
-      const role: string = this.role.trim();
-      if (role.length && role !== this.model.role) {
-        this.staffService.updateStaff(this.model, {role});
-      }
-      this.stopEditing();
-    }
-  }
-
-  stopEditing(): void {
-    this.editing = false;
-  }
 }
