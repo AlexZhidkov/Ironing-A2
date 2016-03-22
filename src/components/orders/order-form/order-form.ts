@@ -24,13 +24,12 @@ const template: string = require('./order-form.html');
 export class OrderForm {
     order: ControlGroup;
     builder: FormBuilder;
-    
-    constructor(private orderService: OrderService, 
-                private userService: UserService, 
-                private authService: AuthService, 
-                private toasterService: ToasterService, 
-                fb: FormBuilder) 
-    {
+
+    constructor(private orderService: OrderService,
+                private userService: UserService,
+                private authService: AuthService,
+                private toasterService: ToasterService,
+                fb: FormBuilder) {
         let currentUser = this.authService.authenticated;
         this.order = fb.group({
             'name': [currentUser.name, Validators.required],
@@ -40,7 +39,7 @@ export class OrderForm {
             'message': ['', Validators.required]
         });
     }
-    
+
     submit(event: any): void {
         let data = new Order();
         data.name = this.order.value.name;

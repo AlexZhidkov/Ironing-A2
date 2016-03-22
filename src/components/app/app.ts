@@ -9,7 +9,7 @@ import { Clients } from '../clients/clients';
 import { Staff } from '../staff/staff';
 import { Prices } from '../prices/prices';
 import { Profile } from '../profile/profile';
-import { IUser, User } from 'core/user/user';
+import { IUser } from 'core/user/user';
 
 const styles: string = require('./app.scss');
 const template: string = require('./app.html');

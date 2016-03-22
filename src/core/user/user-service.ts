@@ -27,7 +27,7 @@ export class UserService {
             }
         });
     }
-    
+
     updateUserFromOrder(key: string, order: IOrder): void {
         let newClient = new User();
         newClient.name = order.name;

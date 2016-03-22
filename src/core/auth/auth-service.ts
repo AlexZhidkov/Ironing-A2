@@ -17,7 +17,7 @@ export class AuthService {
         if (authData.provider !== 'anonymous"') {
             this.user.name = authData[authData.provider]['displayName'];
             this.user.imageUrl = authData[authData.provider]['profileImageURL'];
-            if (authData.provider === 'twitter') {            
+            if (authData.provider === 'twitter') {
                 this.user.twitter = authData['twitter']['username'];
             }
         }
@@ -115,7 +115,7 @@ export class AuthService {
                     reject(new Error(errorMessage));
                 }
                 else {
-                    resolve(this.user);                     
+                    resolve(this.user);
                 }
             });
         }

@@ -1,6 +1,5 @@
 import { IClient, Client } from './client';
 import { IOrder } from '../order/order';
-import { IUser } from '../user/user';
 
 export class ClientService {
     constructor(private ref: Firebase, private userKey: string) { }
@@ -21,7 +20,7 @@ export class ClientService {
         });
     }
 
-    updateClient(key:string, changes: any): void {
+    updateClient(key: string, changes: any): void {
         this.ref.child(key).update(changes, (error: Error) => {
             if (error) {
                 console.error('ERROR @ updateClient :', error);

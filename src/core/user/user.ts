@@ -18,7 +18,7 @@ export class User implements IUser {
     address: string;
     imageUrl: string;
     role: string;
-    
+
     constructor() {
     }
 }

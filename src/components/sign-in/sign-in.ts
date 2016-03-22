@@ -3,7 +3,6 @@ import { CanActivate, Router } from 'angular2/router';
 import { AuthRouteHelper } from 'core/auth/auth-route-helper';
 import { AuthService } from 'core/auth/auth-service';
 import { StaffService } from 'core/staff/staff-service';
-import { Staff } from 'core/staff/staff';
 
 const styles: string = require('./sign-in.scss');
 const template: string = require('./sign-in.html');
