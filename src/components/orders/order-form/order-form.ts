@@ -23,6 +23,7 @@ const template: string = require('./order-form.html');
 export class OrderForm {
     order: ControlGroup;
     builder: FormBuilder;
+    
     constructor(private orderService: OrderService, private clientService: ClientService, private toasterService: ToasterService, fb: FormBuilder) {
         this.order = fb.group({
             'name': ['', Validators.required],
@@ -32,6 +33,7 @@ export class OrderForm {
             'message': ['', Validators.required]
         });
     }
+    
     submit(event: any): void {
         let data = new Order();
         data.name = this.order.value.name;

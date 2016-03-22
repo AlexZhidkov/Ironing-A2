@@ -9,10 +9,10 @@
                 <a class="mdl-navigation__link" href="" (click)="signOut()">Sign Out</a>
                 <a class="mdl-navigation__link" href="/orderform">Order Form</a>
                 <a class="mdl-navigation__link" href="/orders">Orders</a>
-                <a class="mdl-navigation__link" href="/clients" *ngIf="authenticated.role && authenticated.role !== 'new staff'">Clients</a>
+                <a class="mdl-navigation__link" href="/clients" *ngIf="authenticated.role !== 'client'">Clients</a>
                 <a class="mdl-navigation__link" href="/staff" *ngIf=" authenticated.role =='manager'">Staff</a>
                 <a class="mdl-navigation__link" href="/prices" *ngIf="authenticated.role =='manager'">Prices</a>
-                <a class="mdl-navigation__link" href="/profile" *ngIf="authenticated.role">Profile</a>
+                <a class="mdl-navigation__link" href="/profile">Profile</a>
             </nav>
         </div>
     </header>
@@ -22,10 +22,10 @@
             <a class="mdl-navigation__link" href="">Sign Out</a>
             <a class="mdl-navigation__link" href="/orderform">Order Form</a>
             <a class="mdl-navigation__link" href="/orders">Orders</a>
-            <a class="mdl-navigation__link" href="/clients" *ngIf="authenticated.role && authenticated.role !== 'new staff'">Clients</a>
+            <a class="mdl-navigation__link" href="/clients" *ngIf="authenticated.role !== 'client'">Clients</a>
             <a class="mdl-navigation__link" href="/staff" *ngIf="authenticated.role =='manager'">Staff</a>
             <a class="mdl-navigation__link" href="/prices" *ngIf="authenticated.role =='manager'">Prices</a>
-            <a class="mdl-navigation__link" href="/profile" *ngIf="authenticated.role">Profile</a>
+            <a class="mdl-navigation__link" href="/profile">Profile</a>
         </nav>
     </div>
     <main class="mdl-layout__content">

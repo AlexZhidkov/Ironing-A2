@@ -6,7 +6,7 @@ export class ClientService {
     constructor(private ref: Firebase, private user: IUser) { }
 
     createClient(client: IClient): void {
-        this.ref.child(this.user.id).set(client, (error: Error) => {
+        this.ref.child(this.user.key).set(client, (error: Error) => {
             if (error) {
                 console.error('ERROR @ createClient :', error);
             }
@@ -14,7 +14,7 @@ export class ClientService {
     }
 
     deleteClient(client: IClient): void {
-        this.ref.child(this.user.id).remove((error: Error) => {
+        this.ref.child(this.user.key).remove((error: Error) => {
             if (error) {
                 console.error('ERROR @ deleteClient :', error);
             }
@@ -22,7 +22,7 @@ export class ClientService {
     }
 
     updateClient(changes: any): void {
-        this.ref.child(this.user.id).update(changes, (error: Error) => {
+        this.ref.child(this.user.key).update(changes, (error: Error) => {
             if (error) {
                 console.error('ERROR @ updateClient :', error);
             }
@@ -37,7 +37,7 @@ export class ClientService {
         newClient.address = order.address;
         newClient.imageUrl = this.user.imageUrl;
         newClient.lastOrderAt = order.createdAt;
-        let savedClient = this.ref.child(this.user.id).once('value', s => s.val());
+        let savedClient = this.ref.child(this.user.key).once('value', s => s.val());
         if (savedClient) {
             this.updateClient(newClient);
         }

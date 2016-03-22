@@ -1,5 +1,5 @@
 import { EventEmitter } from 'angular2/core';
-import { IUser, User } from './user';
+import { IUser, User } from './../user/user';
 
 export class AuthService {
   private authData: FirebaseAuthData;
@@ -13,24 +13,37 @@ export class AuthService {
     this.ref.onAuth((authData: FirebaseAuthData) => {
       this.authData = authData;
       if (authData !== null) {
-        this.user.id = authData.uid;
-        if (authData.provider === 'google') {
-            this.user.name = authData['google']['displayName'];
-            this.user.imageUrl = authData['google']['profileImageURL'];
+        this.user.key = authData.uid;
+        if (authData.provider !== 'anonymous"') {
+            this.user.name = authData[authData.provider]['displayName'];
+            this.user.imageUrl = authData[authData.provider]['profileImageURL'];
+            if (authData.provider === 'twitter') {            
+                this.user.twitter = authData['twitter']['username'];
+            }
         }
+        this.getSavedUser().then((savedUser) => {
+            this.user = savedUser;
+            this.emit();
+        });
       }
-      this.emit();
     });
   }
 
   get authenticated(): IUser {
-    return (this.authData !== null && !this.expired) ? this.currentUser() : null;
+    return (this.authData !== null && !this.expired) ? this.user : null;
   }
 
+  getOrCreateUser(): void {
+   }
+
   currentUser(): IUser {
-    this.getStaffRole().then((role) => {
-        this.user.role = role;
-    });
+    if (!this.user.role) {
+        console.log(this.user);
+        this.getSavedUser().then((savedUser) => {
+            this.user = savedUser;
+        });
+    }
+    console.log(this.user);
     return this.user;
   }
 
@@ -100,23 +113,28 @@ export class AuthService {
     });
   }
 
-  private getStaffRole(): Promise<string> {
-    return new Promise((resolve: (role: string) => void, reject: (reason: Error) => void) => {
-      this.ref.child('staff').child(this.authData.uid).once('value', (snapshot: FirebaseDataSnapshot) => {
-        if (snapshot) {
-           let staff: IUser = snapshot.val();
-           let role = '';
-           if (staff !== null) role = staff.role;
-           resolve(role);
+  private getSavedUser(): Promise<IUser> {
+    return new Promise((resolve: (savedUser: IUser) => void, reject: (reason: Error) => void) => {
+      this.ref.child('users').child(this.authData.uid).once('value', (snapshot: FirebaseDataSnapshot) => {
+        if (snapshot.val()) {
+           let savedUser: IUser = snapshot.val();
+           resolve(savedUser);
         }
         else {
-          let error = new Error('ERROR @ getStaffRole: empty snapshot');
-          console.error('ERROR @ getStaffRole  :', error);
-          reject(error);
+           this.user.role = 'client';
+           this.ref.child('users').child(this.authData.uid).set(this.user, (error: Error) => {
+                if (error) {
+                    let errorMessage = 'ERROR @ createUser :' + error;
+                    console.error(errorMessage);
+                    reject(new Error(errorMessage));
+                }
+                else {
+                    resolve(this.user);                     
+                }
+            });
         }
       });
     });
-
   }
 
   private emit(): void {

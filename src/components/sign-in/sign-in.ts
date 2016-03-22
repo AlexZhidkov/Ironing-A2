@@ -54,15 +54,5 @@ export class SignIn {
   }
 
   private postSignIn(): void {
-      if (this.isStaff) {
-          let user = this.auth.authenticated;
-          if (!user.role && user.role !== '') {
-              let staff = new Staff();
-              staff.name = user.name;
-              staff.imageUrl = user.imageUrl;
-              staff.role = 'new staff';
-              this.staffService.createStaff(staff, user.id);
-          }
-      }
   }
 }
