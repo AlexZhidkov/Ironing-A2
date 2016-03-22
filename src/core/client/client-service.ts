@@ -1,12 +1,12 @@
 import { IClient, Client } from './client';
 import { IOrder } from '../order/order';
-import { IUser } from '../auth/user';
+import { IUser } from '../user/user';
 
 export class ClientService {
-    constructor(private ref: Firebase, private user: IUser) { }
+    constructor(private ref: Firebase, private userKey: string) { }
 
     createClient(client: IClient): void {
-        this.ref.child(this.user.key).set(client, (error: Error) => {
+        this.ref.child(this.userKey).set(client, (error: Error) => {
             if (error) {
                 console.error('ERROR @ createClient :', error);
             }
@@ -14,35 +14,28 @@ export class ClientService {
     }
 
     deleteClient(client: IClient): void {
-        this.ref.child(this.user.key).remove((error: Error) => {
+        this.ref.child(this.userKey).remove((error: Error) => {
             if (error) {
                 console.error('ERROR @ deleteClient :', error);
             }
         });
     }
 
-    updateClient(changes: any): void {
-        this.ref.child(this.user.key).update(changes, (error: Error) => {
+    updateClient(key:string, changes: any): void {
+        this.ref.child(key).update(changes, (error: Error) => {
             if (error) {
                 console.error('ERROR @ updateClient :', error);
             }
         });
     }
 
-    createOrUpdateClient(order: IOrder): void {
+    updateClientFromOrder(key: string, order: IOrder): void {
         let newClient = new Client();
         newClient.name = order.name;
         newClient.email = order.email;
         newClient.phone = order.phone;
         newClient.address = order.address;
-        newClient.imageUrl = this.user.imageUrl;
-        newClient.lastOrderAt = order.createdAt;
-        let savedClient = this.ref.child(this.user.key).once('value', s => s.val());
-        if (savedClient) {
-            this.updateClient(newClient);
-        }
-        else {
-            this.createClient(newClient);
-        }
+        // newClient.lastOrderAt = order.createdAt;
+        this.updateClient(key, newClient);
     }
 }

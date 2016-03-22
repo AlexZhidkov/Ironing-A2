@@ -8,7 +8,7 @@ export const CLIENT_PROVIDERS: any[] = [
   provide(ClientService, {
     deps: [AuthService],
     useFactory: (auth: AuthService): ClientService => {
-      return new ClientService(new Firebase(`${FIREBASE_CLIENTS_URL}`), auth.authenticated);
+      return new ClientService(new Firebase(`${FIREBASE_CLIENTS_URL}`), auth.authenticated.key);
     }
   }),
 

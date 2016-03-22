@@ -1,5 +1,5 @@
-import { IUser } from './user';
-
+import { IUser, User } from './user';
+import { IOrder } from '../order/order';
 
 export class UserService {
     constructor(private ref: Firebase) { }
@@ -27,4 +27,15 @@ export class UserService {
             }
         });
     }
+    
+    updateUserFromOrder(key: string, order: IOrder): void {
+        let newClient = new User();
+        newClient.name = order.name;
+        newClient.email = order.email;
+        newClient.phone = order.phone;
+        newClient.address = order.address;
+        // newClient.lastOrderAt = order.createdAt;
+        this.updateUser(key, newClient);
+    }
+
 }

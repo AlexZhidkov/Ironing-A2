@@ -33,20 +33,6 @@ export class AuthService {
     return (this.authData !== null && !this.expired) ? this.user : null;
   }
 
-  getOrCreateUser(): void {
-   }
-
-  currentUser(): IUser {
-    if (!this.user.role) {
-        console.log(this.user);
-        this.getSavedUser().then((savedUser) => {
-            this.user = savedUser;
-        });
-    }
-    console.log(this.user);
-    return this.user;
-  }
-
   setStaff(isStaff: boolean): void {
     this.isStaff = isStaff;
   }
