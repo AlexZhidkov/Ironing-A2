@@ -1,6 +1,6 @@
 import { Component, Input } from 'angular2/core';
-import { IClient } from 'core/client/client';
-import { ClientService } from 'core/client/client-service';
+import { IUser } from 'core/user/user';
+import { UserService } from 'core/user/user-service';
 import { Autofocus } from 'directives/autofocus-directive';
 
 const styles: string = require('./client-item.scss');
@@ -8,22 +8,22 @@ const template: string = require('./client-item.html');
 
 
 @Component({
-  directives: [
-    Autofocus
-  ],
-  selector: 'client-item',
-  styles: [styles],
-  template
+    directives: [
+        Autofocus
+    ],
+    selector: 'client-item',
+    styles: [styles],
+    template
 })
 
 export class ClientItem {
-  @Input() model: IClient;
+    @Input() model: IUser;
 
-  editing: boolean = false;
+    editing: boolean = false;
 
-  constructor(private clientService: ClientService) {}
+    constructor(private userService: UserService) { }
 
-  delete(): void {
-    this.clientService.deleteClient(this.model);
-  }
+    delete(): void {
+        this.userService.deleteUser(this.model);
+    }
 }
