@@ -1,7 +1,6 @@
 import { Pipe, PipeTransform } from 'angular2/core';
 import { IUser } from 'core/user/user';
 
-
 @Pipe({
     name: 'filterClients',
     pure: true
@@ -14,5 +13,5 @@ export class ClientListFilterPipe implements PipeTransform {
         return list.filter((user: IUser) => {
             return user.role === 'client';
         });
-     }
+    }
 }
