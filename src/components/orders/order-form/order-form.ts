@@ -4,6 +4,7 @@ import { AuthRouteHelper } from 'core/auth/auth-route-helper';
 import { FormBuilder, ControlGroup, Validators } from 'angular2/common';
 import { ToasterContainerComponent, ToasterService } from 'angular2-toaster/angular2-toaster';
 import { Order } from 'core/order/order';
+import { IUser } from 'core/user/user';
 import { OrderService } from 'core/order/order-service';
 import { UserService } from 'core/user/user-service';
 import { AuthService } from 'core/auth/auth-service';
@@ -22,22 +23,28 @@ const template: string = require('./order-form.html');
 @CanActivate(() => AuthRouteHelper.requireAuth() !== null)
 
 export class OrderForm {
-    order: ControlGroup;
+    order: ControlGroup = null;
     builder: FormBuilder;
+    currentUser: IUser = null;
 
     constructor(private orderService: OrderService,
                 private userService: UserService,
                 private authService: AuthService,
                 private toasterService: ToasterService,
                 fb: FormBuilder) {
-        let currentUser = this.authService.authenticated;
-        this.order = fb.group({
-            'name': [currentUser.name, Validators.required],
-            'email': [currentUser.email, Validators.required],
-            'phone': [currentUser.phone, Validators.required],
-            'address': [currentUser.address, Validators.required],
-            'message': ['', Validators.required]
+          this.order = fb.group({
+                'name': ['', Validators.required],
+                'email': ['', Validators.required],
+                'phone': ['', Validators.required],
+                'address': ['', Validators.required],
+                'message': ['', Validators.required]
+            });
+
+        authService.subscribe((authenticated: IUser) => {
+            this.currentUser = authenticated;
+            this.order.value.name = this.currentUser.name;
         });
+
     }
 
     submit(event: any): void {

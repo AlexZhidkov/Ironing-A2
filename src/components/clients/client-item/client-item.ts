@@ -19,11 +19,9 @@ const template: string = require('./client-item.html');
 export class ClientItem {
     @Input() model: IUser;
 
-    editing: boolean = false;
+    constructor(private userService: UserService) {}
 
-    constructor(private userService: UserService) { }
-
-    delete(): void {
-        this.userService.deleteUser(this.model);
+    makeStaff(): void {
+        this.userService.updateUser(this.model.key, {role: 'staff'});
     }
 }
