@@ -10,12 +10,20 @@
                 <input class="mdl-textfield__input" ngControl="name" [(ngModel)]="person.name" type="text" id="Name">
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                Email
-                <input class="mdl-textfield__input" ngControl="email" [(ngModel)]="person.email" type="text" id="Email">
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 Phone
                 <input class="mdl-textfield__input" ngControl="phone" [(ngModel)]="person.phone" type="number" id="Phone">
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                Email
+                <input class="mdl-textfield__input" ngControl="email" [(ngModel)]="person.email" type="email" id="Email">
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                Twitter
+                <input class="mdl-textfield__input" ngControl="twitter" [(ngModel)]="person.twitter" type="text" id="Twitter">
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                Address
+                <input class="mdl-textfield__input" ngControl="twitter" [(ngModel)]="person.address" type="text" id="Address">
             </div>
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit">
                 Submit
