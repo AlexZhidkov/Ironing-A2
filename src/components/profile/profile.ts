@@ -21,10 +21,13 @@ const template: string = require('./profile.html');
 export class Profile {
     profile: ControlGroup;
     builder: FormBuilder;
-    person: IUser;
+    person: IUser = null;
 
     constructor(private userService: UserService, private authService: AuthService, private toasterService: ToasterService, fb: FormBuilder) {
-        this.person = authService.authenticated;
+        authService.subscribe((authenticated: IUser) => {
+            this.person = authenticated;
+        });
+
         this.profile = fb.group({
             'name': ['', Validators.required],
             'phone': ['', Validators.required],
