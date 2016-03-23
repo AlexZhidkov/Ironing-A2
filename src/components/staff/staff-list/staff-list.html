@@ -12,4 +12,4 @@
 </div>
 -->
 
-<staff-item [model]="staff" *ngFor="#staff of staff | async "></staff-item>
+<staff-item [model]="staff" *ngFor="#staff of staff | async | filterStaff:filter"></staff-item>
