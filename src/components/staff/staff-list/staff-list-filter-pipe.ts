@@ -9,8 +9,8 @@ import { IUser } from 'core/user/user';
 export class StaffListFilterPipe implements PipeTransform {
     transform(list: IUser[], filterType?: string[]): IUser[] {
         if (!list) return list;
-        console.log(filterType);
-        if (!filterType) {
+        console.log(filterType[0]);
+        if (!filterType[0]) {
             return list.filter((staff: IUser) => {
                 return staff.role !== 'client';
             });
