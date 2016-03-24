@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from 'angular2/core';
+import { ChangeDetectionStrategy, Component, Input, ElementRef, OnInit } from 'angular2/core';
 import { RouterLink, RouteParams } from 'angular2/router';
 import { List } from 'immutable';
 import { ReplaySubject } from 'rxjs/subject/ReplaySubject';
@@ -10,25 +10,30 @@ const template: string = require('./order-list.html');
 
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  directives: [
-    RouterLink,
-    OrderItem
-  ],
-  pipes: [
-    OrderListFilterPipe
-  ],
-  selector: 'order-list',
-  styles: [styles],
-  template
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    directives: [
+        RouterLink,
+        OrderItem
+    ],
+    pipes: [
+        OrderListFilterPipe
+    ],
+    selector: 'order-list',
+    styles: [styles],
+    template
 })
 
 export class OrderList {
-  @Input() orders: ReplaySubject<List<any>>;
+    @Input() orders: ReplaySubject<List<any>>;
 
-  filter: string;
+    filter: string;
 
-  constructor(params: RouteParams) {
-    this.filter = params.get('filter');
-  }
+    constructor(params: RouteParams, private elementRef: ElementRef) {
+        this.filter = params.get('filter');
+        componentHandler.upgradeElement(this.elementRef.nativeElement.querySelector('#order-list-tabs'));
+    }
+
+    ngOnInit() {
+    }
+
 }
