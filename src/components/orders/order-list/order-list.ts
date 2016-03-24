@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input, ElementRef } from 'angular2/core';
+import { ChangeDetectionStrategy, Component, Input } from 'angular2/core';
+import { MDL } from 'directives/MaterialDesignLiteUpgradeElement';
 import { RouterLink, RouteParams } from 'angular2/router';
 import { List } from 'immutable';
 import { ReplaySubject } from 'rxjs/subject/ReplaySubject';
@@ -13,6 +14,7 @@ const template: string = require('./order-list.html');
     changeDetection: ChangeDetectionStrategy.OnPush,
     directives: [
         RouterLink,
+        MDL,
         OrderItem
     ],
     pipes: [
@@ -30,7 +32,5 @@ export class OrderList {
 
     constructor(params: RouteParams, private elementRef: ElementRef) {
         this.filter = params.get('filter');
-        componentHandler.upgradeElement(this.elementRef.nativeElement.querySelector('#order-list-tabs'));
     }
-
 }
