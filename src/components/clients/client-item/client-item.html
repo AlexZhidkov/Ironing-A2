@@ -13,6 +13,6 @@
         <a class="mdl-list__item-secondary-action" href="">Orders</a>
     </span>
     <span class="mdl-list__item-secondary-content">
-        <button class="mdl-button mdl-js-button " (click)="makeStaff()">Staff</button>
+        <button *ngIf="isManager" class="mdl-button mdl-js-button " (click)="makeStaff()">Staff</button>
     </span>
 </li>

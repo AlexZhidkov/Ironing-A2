@@ -18,6 +18,7 @@ const template: string = require('./client-item.html');
 
 export class ClientItem {
     @Input() model: IUser;
+    @Input() isManager: boolean;
 
     constructor(private userService: UserService) {}
 
