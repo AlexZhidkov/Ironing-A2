@@ -30,7 +30,7 @@ export class OrderList {
 
     filter: string;
 
-    constructor(params: RouteParams, private elementRef: ElementRef) {
+    constructor(params: RouteParams) {
         this.filter = params.get('filter');
     }
 }
