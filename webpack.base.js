@@ -4,7 +4,8 @@ const path = require('path');
 
 module.exports = {
   assets: [
-    {from: 'node_modules/angular2-toaster/lib/toaster.css'}
+    {from: 'node_modules/angular2-toaster/lib/toaster.css'},
+    {from: 'node_modules/material-design-lite/dist/material.grey-red.min.css'}
   ],
 
   entry: {
@@ -18,6 +19,7 @@ module.exports = {
       'angular2/router',
       'firebase',
       'immutable',
+      'material-design-lite',
       'rxjs/subject/ReplaySubject'
     ]
   },

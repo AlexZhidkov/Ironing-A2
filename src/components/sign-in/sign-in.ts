@@ -53,5 +53,6 @@ export class SignIn {
   }
 
   private postSignIn(): void {
+    this.router.navigate(['/Order Form']);
   }
 }

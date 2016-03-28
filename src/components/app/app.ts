@@ -1,4 +1,4 @@
-import { Component } from 'angular2/core';
+import { Component, ElementRef } from 'angular2/core';
 import { RouteConfig, RouterOutlet, RouteDefinition } from 'angular2/router';
 import { AuthRouteHelper } from 'core/auth/auth-route-helper';
 import { AuthService } from 'core/auth/auth-service';
@@ -15,40 +15,44 @@ const styles: string = require('./app.scss');
 const template: string = require('./app.html');
 
 export var APP_ROUTES: RouteDefinition[] = [
-    {path: '/', component: SignIn, as: 'Sign In'},
-    {path: '/orderform', component: OrderForm, as: 'Order Form'},
-    {path: '/orders', component: Orders, as: 'Orders'},
-    {path: '/clients', component: Clients, as: 'Clients'},
-    {path: '/staff', component: Staff, as: 'Staff'},
-    {path: '/prices', component: Prices, as: 'Prices'},
-    {path: '/profile', component: Profile, as: 'Profile'}
+    { path: '/', component: SignIn, as: 'Sign In' },
+    { path: '/orderform', component: OrderForm, as: 'Order Form' },
+    { path: '/orders', component: Orders, as: 'Orders' },
+    { path: '/clients', component: Clients, as: 'Clients' },
+    { path: '/staff', component: Staff, as: 'Staff' },
+    { path: '/prices', component: Prices, as: 'Prices' },
+    { path: '/profile', component: Profile, as: 'Profile' }
 ];
 
+declare var componentHandler: any;
+
 @Component({
-  directives: [
-    RouterOutlet
-  ],
-  selector: 'app',
-  styles: [styles],
-  template
+    directives: [
+        RouterOutlet
+    ],
+    selector: 'app',
+    styles: [styles],
+    template
 })
 
 @RouteConfig(APP_ROUTES)
 
 export class App {
-  authenticated: IUser = null;
-  public appRoutes: RouteDefinition[];
+    authenticated: IUser = null;
+    public appRoutes: RouteDefinition[];
+    elementRef: ElementRef;
 
-  constructor(private auth: AuthService, routeHelper: AuthRouteHelper) {
-    auth.subscribe((authenticated: IUser) => {
-      this.authenticated = authenticated;
-      this.appRoutes = APP_ROUTES;
-    });
-  }
+    constructor(private auth: AuthService, routeHelper: AuthRouteHelper, elementRef: ElementRef) {
+        this.elementRef = elementRef;
+        auth.subscribe((authenticated: IUser) => {
+            this.authenticated = authenticated;
+            this.appRoutes = APP_ROUTES;
+        });
+    }
 
-  signOut(): void {
-    this.authenticated = null;
-    this.auth.signOut();
-    window.location.replace('/');
-  }
+    signOut(): void {
+        this.authenticated = null;
+        this.auth.signOut();
+        window.location.replace('/');
+    }
 }
