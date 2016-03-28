@@ -19,3 +19,83 @@
 ::selection {
   background: rgba(200,200,255,.1);
 }
+
+//===================================================================
+//  MD-MENU
+//===================================================================
+
+.section {
+  background: #f7f7f7;
+  border-radius: 3px;
+  text-align: center;
+  margin: 1em;
+  position: relative !important;
+  padding-bottom: 10px; }
+  section [md-button], section [md-raised-button], section [md-fab] {
+    margin-top: 16px;
+    margin-bottom: 16px; }
+    section.menu-demo{
+      padding-top: 16px;
+    }
+.section.menu-demo  [md-button], section.menu-demo [md-raised-button], section.menu-demo [md-fab]{
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.md-content {
+  margin-right: 7px; }
+
+.label {
+  position: absolute;
+  bottom: 5px;
+  left: 7px;
+  font-size: 14px;
+  opacity: 0.54; }
+.md-backdrop {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-transition: opacity 450ms;
+    transition: opacity 450ms;
+    opacity: 0;
+    z-index: 50;
+}
+
+md-menu md-menu-content {
+		position: absolute;
+		top:0;
+		right: 0;
+		box-shadow: 0px 2px 5px 0 rgba(0, 0, 0, 0.26);
+    	z-index: 100;
+		background: #f1f1f1;
+		color: #8f8f8f;
+		visibility: hidden;
+		opacity: 0;
+		transition: visibility 0s, opacity 0.20s linear;
+}
+md-menu md-menu-content [md-button] {
+			color: #8f8f8f !important;
+    		width: 100%;
+    		margin: 0;
+    	}
+		
+
+md-menu .md-backdrop {
+	display: none;
+	z-index:99;
+}
+md-menu.show-menu md-menu-content {
+	visibility: visible;
+	opacity: 1;
+}
+md-menu.show-menu md-backdrop {
+	display: block;
+}
+md-menu {
+	position: relative;
+	display: block;
+}
+/*# sourceMappingURL=basic_usage.css.map */

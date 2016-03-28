@@ -1,43 +1,24 @@
-<div
-  [ngClass]="{'order-item--completed': model.completed, 'order-item--editing': editing}"
-  class="order-item"
-  tabindex="0">
-
-  <div class="cell">
-    <button
-      *ngIf="!editing"
-      (click)="toggleStatus()"
-      aria-label="Mark order as completed"
-      class="order-item__button"
-      type="button">
-      <span class="icon material-icons" [ngClass]="{'icon--active': model.completed}">done</span>
-    </button>
-  </div>
-
-  <div class="cell">
-    <div
-      class="order-item__name"
-      tabindex="0">
-      {{ model.name }}, {{model.email}}, {{model.phone}}, {{model.address}}, {{model.message}}
+<div class="mdl-grid">
+    <div class="mdl-card mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet mdl-shadow--2dp">
+        <div class="mdl-card__title mdl-card--expand">
+            <div>
+                <h5>{{ model.name }}</h5>
+                <br>{{model.phone}}, {{model.address}}</div>
+        </div>
+        <div class="mdl-card__supporting-text">
+            <p>{{model.message}}</p>
+            Assigned To: {{model.assignedTo}}
+        </div>
+        <div class="mdl-card__actions">
+            <md-menu>
+                <button class="mdl-button mdl-js-button mdl-button--raised">
+                    Assign Driver
+                </button>
+                <md-menu-content>
+                    <button md-button (click)="assignDriver('one')">One</button>
+                    <button md-button (click)="assignDriver('two')">Two</button>
+                </md-menu-content>
+            </md-menu>
+        </div>
     </div>
-  </div>
-
-  <div class="cell">
-    <button
-      *ngIf="editing"
-      (click)="stopEditing()"
-      aria-label="Cancel editing"
-      class="order-item__button"
-      type="button">
-      <span class="icon material-icons">&#xe14c;</span>
-    </button>
-    <button
-      *ngIf="!editing"
-      (click)="delete()"
-      aria-label="Delete order"
-      class="order-item__button"
-      type="button">
-      <span class="icon material-icons">delete</span>
-    </button>
-  </div>
 </div>

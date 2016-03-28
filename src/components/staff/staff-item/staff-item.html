@@ -1,4 +1,4 @@
-<div mdl class="mdl-list__item mdl-list__item--three-line">
+<div class="mdl-list__item mdl-list__item--three-line">
     <span class="mdl-list__item-primary-content">
         <img *ngIf="model.imageUrl" class="mdl-list__item-avatar" src={{model.imageUrl}} alt="" />
         <i *ngIf="!model.imageUrl" class="material-icons mdl-list__item-avatar">person</i>
@@ -11,18 +11,16 @@
       </span>
     </span>
     <span>
-        <button class="mdl-button mdl-js-button mdl-js-ripple-effect" [ngClass]="{'mdl-button--raised mdl-button--accent': model.role === 'manager'}" 
-            (click)="setRole('manager')">
-            Manager
-        </button>
-        <button class="mdl-button mdl-js-button mdl-js-ripple-effect" [ngClass]="{'mdl-button--raised mdl-button--accent': model.role === 'driver'}"
-            (click)="setRole('driver')">
-            Driver
-        </button>
-        <button class="mdl-button mdl-js-button mdl-js-ripple-effect" [ngClass]="{'mdl-button--raised mdl-button--accent': model.role === 'ironer'}"
-            (click)="setRole('ironer')">
-            Ironer
-        </button>
+        <md-menu>
+            <button class="mdl-button mdl-js-button mdl-button--raised">
+                {{model.role}}
+            </button>
+            <md-menu-content>
+                <button md-button (click)="setRole('manager')">manager</button>
+                <button md-button (click)="setRole('driver')">driver</button>
+                <button md-button (click)="setRole('ironer')">ironer</button>
+            </md-menu-content>
+        </md-menu>
     </span>
     <span class="mdl-list__item-secondary-content">
         <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab" (click)="delete()">

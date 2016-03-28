@@ -2,6 +2,7 @@ import { Component, Input } from 'angular2/core';
 import { IOrder } from 'core/order/order';
 import { OrderService } from 'core/order/order-service';
 import { Autofocus } from 'directives/autofocus-directive';
+import { MdMenu } from 'directives/md-menu';
 
 const styles: string = require('./order-item.scss');
 const template: string = require('./order-item.html');
@@ -9,7 +10,8 @@ const template: string = require('./order-item.html');
 
 @Component({
   directives: [
-    Autofocus
+    Autofocus,
+    MdMenu
   ],
   selector: 'order-item',
   styles: [styles],
@@ -23,6 +25,11 @@ export class OrderItem {
   name: string = '';
 
   constructor(private orderService: OrderService) {}
+
+  assignDriver(name: string): void {
+       this.model.assignedTo = name;
+       this.orderService.updateOrder(this.model, { assignedTo: name });
+  }
 
   delete(): void {
     this.orderService.deleteOrder(this.model);

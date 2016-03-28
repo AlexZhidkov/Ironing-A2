@@ -8,6 +8,15 @@ export interface IOrder {
     phone: string;
     address: string;
     message: string;
+    assignedTo: string;
+    pickedUpBy: string;
+    ironedBy: string;
+    deliveredBy: string;
+    status: string;
+    isPrepaid: boolean;
+    garment: number;
+    linen: number;
+    totalCost: number;
 }
 
 
@@ -20,6 +29,15 @@ export class Order implements IOrder {
     phone: string;
     address: string;
     message: string;
+    assignedTo: string;
+    pickedUpBy: string;
+    ironedBy: string;
+    deliveredBy: string;
+    status: string;
+    isPrepaid: boolean;
+    garment: number;
+    linen: number;
+    totalCost: number;
 
     constructor() {
     }
