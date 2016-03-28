@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, Input } from 'angular2/core';
-//import { MDL } from 'directives/MaterialDesignLiteUpgradeElement';
 import { MdlComponent } from 'directives/mdl-directive';
 import { RouterLink, RouteParams } from 'angular2/router';
 import { List } from 'immutable';
