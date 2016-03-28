@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from 'angular2/core';
-import { MDL } from 'directives/MaterialDesignLiteUpgradeElement';
+//import { MDL } from 'directives/MaterialDesignLiteUpgradeElement';
+import { MdlComponent } from 'directives/mdl-directive';
 import { RouterLink, RouteParams } from 'angular2/router';
 import { List } from 'immutable';
 import { ReplaySubject } from 'rxjs/subject/ReplaySubject';
@@ -14,7 +15,7 @@ const template: string = require('./order-list.html');
     changeDetection: ChangeDetectionStrategy.OnPush,
     directives: [
         RouterLink,
-        MDL,
+        MdlComponent,
         OrderItem
     ],
     pipes: [
