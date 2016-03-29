@@ -37,6 +37,6 @@ bootstrap(App, [
   PRICE_PROVIDERS,
   USER_PROVIDERS,
   RefDataService,
-  
+
   provide(APP_BASE_HREF, {useValue: '/'})
 ]).catch((error: Error) => console.error(error));

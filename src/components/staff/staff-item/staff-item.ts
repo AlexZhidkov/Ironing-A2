@@ -23,7 +23,7 @@ export class StaffItem {
     @Input() model: IUser;
     public roles: IRoles;
 
-    constructor(private userService: UserService, private refDataService: RefDataService) { 
+    constructor(private userService: UserService, private refDataService: RefDataService) {
         this.roles = refDataService.getStaffRoles();
     }
 
