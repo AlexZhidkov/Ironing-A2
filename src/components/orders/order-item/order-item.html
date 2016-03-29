@@ -15,8 +15,7 @@
                     Assign Driver
                 </button>
                 <md-menu-content>
-                    <button md-button (click)="assignDriver('one')">One</button>
-                    <button md-button (click)="assignDriver('two')">Two</button>
+                    <button *ngFor="#driver of userStore.user | async | filterStaff:'driver'" md-button (click)="assignDriver(driver.name)">{{driver.name}}</button>
                 </md-menu-content>
             </md-menu>
         </div>

@@ -3,6 +3,8 @@ import { IOrder } from 'core/order/order';
 import { OrderService } from 'core/order/order-service';
 import { Autofocus } from 'directives/autofocus-directive';
 import { MdMenu } from 'directives/md-menu';
+import { UserStore } from 'core/user/user-store';
+import { StaffListFilterPipe } from '../../staff/staff-list/staff-list-filter-pipe';
 
 const styles: string = require('./order-item.scss');
 const template: string = require('./order-item.html');
@@ -15,6 +17,9 @@ const template: string = require('./order-item.html');
   ],
   selector: 'order-item',
   styles: [styles],
+  pipes: [
+    StaffListFilterPipe
+  ],
   template
 })
 
@@ -24,7 +29,7 @@ export class OrderItem {
   editing: boolean = false;
   name: string = '';
 
-  constructor(private orderService: OrderService) {}
+  constructor(private orderService: OrderService, public userStore: UserStore) {}
 
   assignDriver(name: string): void {
        this.model.assignedTo = name;
