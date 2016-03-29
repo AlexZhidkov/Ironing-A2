@@ -13,6 +13,7 @@ import { STAFF_PROVIDERS } from 'core/staff/providers';
 import { PROFILE_PROVIDERS } from 'core/profile/providers';
 import { PRICE_PROVIDERS } from 'core/price/providers';
 import { USER_PROVIDERS } from 'core/user/providers';
+import { RefDataService } from 'core/refdata/refdata-service';
 
 // global styles
 import './styles/styles.scss';
@@ -35,5 +36,7 @@ bootstrap(App, [
   PROFILE_PROVIDERS,
   PRICE_PROVIDERS,
   USER_PROVIDERS,
+  RefDataService,
+  
   provide(APP_BASE_HREF, {useValue: '/'})
 ]).catch((error: Error) => console.error(error));

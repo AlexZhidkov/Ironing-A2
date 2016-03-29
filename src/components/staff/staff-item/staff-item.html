@@ -16,9 +16,9 @@
                 {{model.role}}
             </button>
             <md-menu-content>
-                <button md-button (click)="setRole('manager')">manager</button>
-                <button md-button (click)="setRole('driver')">driver</button>
-                <button md-button (click)="setRole('ironer')">ironer</button>
+                <button md-button (click)="setRole(roles.manager)">{{roles.manager}}</button>
+                <button md-button (click)="setRole(roles.driver)">{{roles.driver}}</button>
+                <button md-button (click)="setRole(roles.ironer)">{{roles.ironer}}</button>
             </md-menu-content>
         </md-menu>
     </span>
