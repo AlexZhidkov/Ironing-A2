@@ -8,3 +8,4 @@
 <div class="mdl-tabs__panel">
     <order-item [model]="order" *ngFor="#order of orders | async | filterOrders:filter"></order-item>
 </div>
+<div class="spinner mdl-spinner mdl-js-spinner is-active" [class.is-active]="!orders.size"></div>

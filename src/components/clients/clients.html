@@ -1,5 +1,2 @@
-<div class="g-row">
-    <div class="g-col">
-        <client-list [clients]="userStore.user"></client-list>
-    </div>
-</div>
+<client-list [clients]="userStore.user"></client-list>
+<div class="spinner mdl-spinner mdl-js-spinner is-active" [class.is-active]="!userStore.list.size"></div>
